@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+		<link href="/static/css/style.css" rel='stylesheet' type='text/css' />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+		<!--webfonts-->
+		<!--//webfonts-->
+    <title>首页</title>
+</head>
+<body>
+    {% if not user %}
+    <a href="/registerView/">注册/登录</a>
+    {% else %}
+    您已经登录<a href="/accounts/login/">注销</a>
+    &nbsp;&nbsp;
+    <a href="/userinfoView/{{user}}">个人信息</a>
+    {% endif %}
+    <div>
+        <form method='get' action="/search/" target="_blank">
+            <input type="text" name="q">
+            <input type="submit" value="查询">
+        </form>
+    </div>
+</body>
+</html>
