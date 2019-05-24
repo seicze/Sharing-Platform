@@ -2,14 +2,15 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-		<link href="/static/css/style.css" rel='stylesheet' type='text/css' />
     <link href="/static/css/bootstrap.css" rel='stylesheet' type='text/css' />
-		<meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="/static/css/search.css" rel='stylesheet' type='text/css' />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="/static/js/jquery-3.4.1.min.js"></script>
-		<script src="/static/js/bootstrap.js"></script>
-		<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-		<!--webfonts-->
-		<!--//webfonts-->
+    <script src="/static/js/bootstrap.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap-hover-dropdown/2.2.1/bootstrap-hover-dropdown.min.js"></script>
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!--webfonts-->
+    <!--//webfonts-->
     <title>首页</title>
 </head>
 <body>
@@ -23,7 +24,7 @@
 
                             <li class="active"><a href="#">主页</a></li>
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">
                                     成果分类
                                     <b class="caret"></b>
                                 </a>
@@ -52,11 +53,54 @@
             </div>
         </div>
     </nav>
-        <div>
-        <form method='get' action="/search/" target="_blank">
-            <input type="text" name="q">
-            <input type="submit" value="查询">
+    <div>
+        <form class="searchmain" method='get' action="/search/" target="_blank">
+            <ul class="search-tab" role="tablist">
+                 <li class="nav-item">
+                    <a class="nav-link active" data-toggle="tab" href="#menu3">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#menu1">Menu 1</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#menu2">Menu 2</a>
+                </li>
+            </ul>
+            <div class="search-form" class="input-box">
+                <div class="input-box tab-content">
+                    <div class="sort">
+                        <div class="sort-default">
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">
+                                    主题
+                                    <b class="caret"></b>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a >关键词</a></li>
+                                    <li><a >作者</a></li>
+                                    <li><a >篇名</a></li>
+                                </ul>
+                            </li>
+                        </div>
+                    </div>
+                    <div id="menu1" class="fade tab-pane" role="tabpanel">
+                        <input class="search-input" type="text" name="q" placeholder="只展示文字修改2" value="" autocomplete="off">
+                        <input class="btn search-btn" type="submit" value="查询">
+                    </div>
+                    <div id="menu2" class="fade tab-pane" role="tabpanel">
+                        <input class="search-input" type="text" name="q" placeholder="只展示文字修改3" value="" autocomplete="off">
+                        <input class="btn search-btn" type="submit" value="查询">
+                    </div>
+                    <div id="menu3" class="tab-pane active" role="tabpanel">
+                        <input class="search-input" type="text" name="q" placeholder="文献名" value="" autocomplete="off">
+                        <input class="btn search-btn" type="submit" value="查询">
+                    </div>
+                </div>
+            </div>
         </form>
+
+
+
     </div>
 </body>
 </html>
