@@ -24,30 +24,29 @@ class UserInfo(forms.Form):
 
 
 def index(request):
-    user = request.session.get('user',False)
+    user_id = request.session.get('user_id',False)
 
-    return render(request,'app01/index.html',{'user':user})
+    return render(request,'app01/index.html',{'user_id':user_id})
 
 
 # 显示页面
 def registerView(request):
-    user = request.session.get('user', False)
-    print(user)
-    if not user:
+    user_id = request.session.get('user_id', False)
+    print(user_id)
+    if not user_id:
         return render(request, 'app01/login.html')
     else:
         return HttpResponseRedirect('/index/')
 
 
 def userinfoView(request,user_id):
-    user = request.session.get('user', False)
-    try:
-        result = Account.objects.get(user_id=user_id)
-    except:
+    my_user_id= request.session.get('user_id', False)
+    result = Account.objects.filter(user_id=user_id)
+    if not result.exists():
         messages.success(request, "异常错误，返回首页")
         return HttpResponseRedirect('/index/')
-    print(user)
-    return render(request, 'app01/userinfo.html', {'data': result})
+    # print(user)
+    return render(request, 'app01/userinfo.html', {'data': result[0], 'user_id': my_user_id})
 
 
 # 注册
@@ -65,6 +64,9 @@ def register(request):
         basic_info = request.POST['basic_info']
         if password1 != password2:
             messages.success(request, "密码不一致！")
+            return render(request, 'app01/login.html')
+        if Account.objects.filter(user_name=user_name):
+            messages.success(request, "用户名重复！")
             return render(request, 'app01/login.html')
         account = Account(user_name=user_name,password=password1,email=email,tel=tel,basic_info=basic_info)
         account.save()
@@ -94,16 +96,15 @@ def login(request):
     user = request.POST['user_name']
     password = request.POST['password']
 
-    try:
-        result = Account.objects.get(user_name=user, password=password)  # filter
-    except:
-        result = None
+    result = Account.objects.filter(user_name=user, password=password)  # filter
 
-    if result is None:
+    if not result.exists():
         messages.success(request, "用户名或密码不正确！")
         return HttpResponseRedirect('/registerView/')
     else:
-        request.session['user'] = result.user_id #修改了
+        result = result[0]
+        request.session['user_id'] = result.user_id #修改了
+        request.session['user_name'] = result.user_name
         return HttpResponseRedirect('/index/')
 
 

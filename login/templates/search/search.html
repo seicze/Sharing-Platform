@@ -4,10 +4,25 @@
     <title></title>
 </head>
 <body>
+{% load highlight %}
+{% load more_like_this %}
+<style>
+    .keyword{color:red;}
+</style>
+<div>
+        <form method='get' action="/search/" target="_blank">
+            <input type="text" name="q">
+            <input type="submit" value="查询">
+        </form>
+</div>
 {% if query %}
     <h3>搜索结果如下：</h3>
     {% for result in page.object_list %}
-        <!--待修改--><a href="/userinfoView/{{result.object.user_id}}" target="_blank">{{ result.object.user_name }} </a><br/>
+        <p>
+            <!--待修改--><a href="/userinfoView/{{result.object.user_id}}" target="_blank">{{ result.object.user_name }} </a><br/>
+            {% highlight result.text with query css_class "keyword" %}
+            {% more_like_this entry as related_content %}
+        </p>
     {% empty %}
         <p>啥也没找到</p>
     {% endfor %}
