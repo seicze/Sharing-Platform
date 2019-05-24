@@ -117,3 +117,7 @@ def logout(request):
 # def search(request):
 #      str = request.POST.get('search_string')
 #      return HttpResponseRedirect('https://www.baidu.com', str)
+
+
+def personal(request):
+    return render(request,"app01/Personal.html")

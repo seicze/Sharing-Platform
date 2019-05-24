@@ -29,4 +29,5 @@ urlpatterns = [
     path(r'userinfoView/<int:user_id>/', views.userinfoView),
     #path('search/', views.search),
     path(r'search/', include('haystack.urls')),
+    path('personal/',views.personal)
 ]

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="/static/css/style.css" rel='stylesheet' type='text/css' />
+    <link href="/static/css/bootstrap.css" rel='stylesheet' type='text/css' />
+    <script src="/static/js/jquery-3.4.1.min.js"></script>
+    <script src="/static/js/bootstrap.js"></script>
+	<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+		<!--webfonts-->
+		<!--//webfonts-->
+    <title>个人空间</title>
+    <link href="/static/individual/css/personal.css" rel='stylesheet' type='text/css' />
+
+</head>
+<body>
+	<div class="top-sign">
+    	<div class="top-labels left" style="margin-left:50px;">English</div>
+        <div class="top-labels left">返回首页</div>
+    	<div class="top-labels right" style="margin-right:50px;">联系我们</div>
+        <div class="top-labels right">帮助中心</div>
+        <div class="top-labels right">外网资源</div>
+        <div class="top-labels right">登出</div>
+    </div>
+    <div class="header">
+        <div class="logo">
+            <img src="/static/images/logo.jpg">
+        </div>
+        <div class="banner">
+            <img src="/static/images/banner.jpg">
+        </div>
+    </div>
+    <div class="mainbody">
+        <div class="sidebar">
+        	<div class="sidehead">
+            	<img style="border-radius:50%; border:2px solid #fff; width:100px; height:100px; margin:40px;">
+                <p align="center" style="margin-top:-20px;">name</p>
+            </div>
+			<div id="person-list">
+                <ul class="nav nav-pills nav-stacked">
+                  <li class="active"><a href="#info" data-toggle="pill">个人信息</a></li>
+                  <li><a href="#account" data-toggle="pill">账户余额</a></li>
+                  <li><a href="#message" data-toggle="pill">我的消息</a></li>
+                  <li><a href="#history" data-toggle="pill">浏览历史</a></li>
+                  <li><a href="#folder" data-toggle="pill">我的收藏</a></li>
+                  <li><a href="#assets" data-toggle="pill">我的科技成果</a></li>
+                </ul>
+			</div>
+        </div>
+        <div class="bodycontent">
+            <div class="pill-content">
+                <div class="tab-pane fade in active" id="info">
+                    <p>
+                    该用户的全部个人信息。注：一开始进入此页面，所有信息都要加载好。
+                    </p>
+                </div>
+                <div class="tab-pane fade" id="account">
+                    <p>
+                    点击查询并显示账户余额，之后会加入充值接口。
+                    </p>
+                </div>
+                <div class="tab-pane fade" id="message">
+                    
+                    此处显示消息列表。之后用下拉列表分成通知和普通消息两项，可以参考知网代码。
+                    
+                </div>
+                <div class="tab-pane fade" id="history">
+                    <p>
+                    显示历史浏览的专家页面或科技成果页面列表，暂时没有这个需求，可以不做。
+                    </p>
+                </div>
+                <div class="tab-pane fade" id="folder">
+                    <p>
+                    展示我的收藏列表，暂时没有需求可以不做。
+                    </p>
+                </div>
+                <div class="tab-pane fade" id="assets">
+                    <p>
+                    如果是专家则展示所有科技成果列表，并提供上传新科技成果接口，点开某一条目跳转到修改科技成果界面。如果是普通用户则显示无成果，并提供跳转到专家认证页面的接口（我之后会写）。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="tail">
+    
+    </div>
+</body>
+</html>
