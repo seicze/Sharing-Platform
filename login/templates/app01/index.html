@@ -4,10 +4,12 @@
     <meta charset="utf-8">
     <link href="/static/css/bootstrap.css" rel='stylesheet' type='text/css' />
     <link href="/static/css/search.css" rel='stylesheet' type='text/css' />
+    <link href="/static/css/bootstrap-select.min.css" rel='stylesheet' type='text/css' />
 	<meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="/static/js/jquery-3.4.1.min.js"></script>
     <script src="/static/js/bootstrap.js"></script>
     <script src="https://cdn.bootcss.com/bootstrap-hover-dropdown/2.2.1/bootstrap-hover-dropdown.min.js"></script>
+    <script src="/static/js/bootstrap-select.min.js"></script>
     <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
     <!--webfonts-->
     <!--//webfonts-->
@@ -69,18 +71,13 @@
             <div class="search-form" class="input-box">
                 <div class="input-box tab-content">
                     <div class="sort">
-                        <div class="sort-default">
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">
-                                    主题
-                                    <b class="caret"></b>
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li><a >关键词</a></li>
-                                    <li><a >作者</a></li>
-                                    <li><a >篇名</a></li>
-                                </ul>
-                            </li>
+                        <div class="sort-default" >
+                              <select class ="selectpicker"  data-style="btn-primary" data-width ="100">
+                                <option value="1">主题</option>
+                                <option value="2">作者</option>
+                                <option value="3">关键词</option>
+                                <option value="4">摘要</option>
+                            </select>
                         </div>
                     </div>
                     <div id="menu1" class="fade tab-pane" role="tabpanel">
