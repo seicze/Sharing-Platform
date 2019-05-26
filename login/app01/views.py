@@ -116,4 +116,9 @@ def logout(request):
 
 # def search(request):
 #      str = request.POST.get('search_string')
-#      return HttpResponseRedirect('https://www.baidu.com', str)
+#
+    return HttpResponseRedirect('https://www.baidu.com', str)
+
+# 查看科技成果
+def viewachieve(request):
+    return render(request,'app01/viewachieve.html')

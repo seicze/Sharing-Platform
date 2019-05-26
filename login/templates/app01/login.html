@@ -2,65 +2,97 @@
 <!DOCTYPE html>
 <html>
 <head>
-		<meta charset="utf-8">
-		<link href="/static/css/style.css" rel='stylesheet' type='text/css' />
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-		<!--webfonts-->
-		<!--//webfonts-->
+    <meta charset="utf-8">
+    <link href="/static/css/bootstrap.css" rel='stylesheet' type='text/css' />
+    <link href="/static/css/search.css" rel='stylesheet' type='text/css' />
+    <link href="/static/css/bootstrap-select.min.css" rel='stylesheet' type='text/css' />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="/static/js/jquery-3.4.1.min.js"></script>
+    <script src="/static/js/bootstrap.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap-hover-dropdown/2.2.1/bootstrap-hover-dropdown.min.js"></script>
+    <script src="/static/js/bootstrap-select.min.js"></script>
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <link href="/static/css/style.css" rel='stylesheet' type='text/css' />
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!--webfonts-->
+    <!--//webfonts-->
+    <title>登录注册</title>
 </head>
 <body>
+    <nav class="navbar navbar-default" role="navigation">
+        <div class="container-fluid" >
+            <div class="nav navbar-default  navbar-header">
+                <a class="navbar-brand" href="#">xfjz</a>
+            </div>
+            <div>
+                <ul class="nav navbar-nav nav-pills navbar-left">
+
+                            <li class="active"><a href="/index/">主页</a></li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">
+                                    成果分类
+                                    <b class="caret"></b>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">工科</a></li>
+                                    <li><a href="#">理科</a></li>
+                                    <li><a href="#">农科</a></li>
+                                </ul>
+                            </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 	<div class="main">
 		<div class="header" >
-			<h1>Login or Create a Free Account!</h1>
+			<h1>注册/登录</h1>
 		</div>
-		<p>Lorem iopsum dolor sit amit,consetetur sadipscing eliter,sed diam voluptua.At vero  eso et accusam et justo duo dolores et ea rebum. </p>
 			<form action="/register/" method="POST">
 				<ul class="left-form">
-					<h2>New Account:</h2>
+					<h2>用户注册</h2>
 					<li>
-						<input type="text" name="user_name"   placeholder="User_name" required/>
+						<input type="text" name="user_name"   placeholder="用户名" required/>
 						<a href="#" class="icon ticker"> </a>
 						<div class="clear"> </div>
 					</li>
                     {% csrf_token %}
 					<li>
-						<input type="text" name="email"  placeholder="Email"/>
+						<input type="text" name="email"  placeholder="邮箱"/>
 						<a href="#" class="icon ticker"> </a>
 						<div class="clear"> </div>
 					</li>
 					<li>
-						<input type="password" name="password1" placeholder="password" required/>
+						<input type="password" name="password1" placeholder="密码" required/>
 						<a href="#" class="icon into"> </a>
 						<div class="clear"> </div>
 					</li>
 					<li>
-						<input type="password" name="password2" placeholder="password" required/>
+						<input type="password" name="password2" placeholder="确认密码" required/>
 						<a href="#" class="icon into"> </a>
 						<div class="clear"> </div>
 					</li>
 					<li>
-						<input type="text" name="tel"  placeholder="Tel"/>
+						<input type="text" name="tel"  placeholder="电话"/>
 						<a href="#" class="icon ticker"> </a>
 						<div class="clear"> </div>
 					</li>
 					<li>
-						<input type="text" name="basic_info"  placeholder="Basic_info" />
+						<input type="text" name="basic_info"  placeholder="基本信息" />
 						<a href="#" class="icon ticker"> </a>
 						<div class="clear"> </div>
 					</li>
 					<!--<label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i> </i>Please inform me of upcoming  w3layouts, Promotions and news</label>-->
-					<input type="submit" onClick="myFunction()" value="Create Account">
+					<input type="submit" onClick="myFunction()" value="提交注册信息">
 						<div class="clear"> </div>
 				</ul>
             </form>
             <form action="/login/" method="post">
 				<ul class="right-form">
                     {% csrf_token %}
-					<h3>Login:</h3>
+					<h3>登录</h3>
 					<div>
-						<li><input type="text" name="user_name"  placeholder="User_name" required/></li>
-						<li> <input type="password" name="password"  placeholder="Password" required/></li>
+						<li><input type="text" name="user_name"  placeholder="用户名" required/></li>
+						<li> <input type="password" name="password"  placeholder="密码" required/></li>
 						<h4>I forgot my Password!</h4>
 							<input type="submit" onClick="myFunction()" value="Login" >
 					</div>
@@ -80,7 +112,7 @@
     {% endif %}
 			<!-----start-copyright---->
    					<div class="copy-right">
-						<p>Template 2014. More Templates <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a></p> 
+                        <p>sharing-platform. 2019</p>
 					</div>
 				<!-----//end-copyright---->
 
