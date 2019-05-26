@@ -16,7 +16,7 @@
     <title>首页</title>
 </head>
 <body>
-        <nav class="navbar navbar-default" role="navigation">
+    <nav class="navbar navbar-default" role="navigation">
         <div class="container-fluid" >
             <div class="nav navbar-default  navbar-header">
                 <a class="navbar-brand" href="#">xfjz</a>
@@ -24,7 +24,7 @@
             <div>
                 <ul class="nav navbar-nav nav-pills navbar-left">
 
-                            <li class="active"><a href="#">主页</a></li>
+                            <li class="active"><a href="/index/">主页</a></li>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">
                                     成果分类
@@ -36,22 +36,20 @@
                                     <li><a href="#">农科</a></li>
                                 </ul>
                             </li>
-                        <li><a href="#">专利大厅</a></li>
                 </ul>
             </div>
             <div>
                     <ul class="nav navbar-nav nav-pills navbar-right">
                          <ul class="nav navbar-nav right">
-                                {% if not user %}
+                                {% if not user_id %}
                                     <li><a href="/registerView/">注册/登录</a></li>
                                 {% else %}
                                     <li><a>您已经登录</a></li>
                                     <li><a href="/accounts/login/">注销</a></li>
-                                    <li><a href="/userinfoView/{{user}}">个人信息</a></li>
+                                    <li><a href="/userinfoView/{{user_id}}">个人信息</a></li>
                                 {% endif %}
                         </ul>
                     </ul>
-                </div>
             </div>
         </div>
     </nav>
