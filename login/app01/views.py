@@ -125,5 +125,8 @@ def personal(request):
 def personalmodify(request):
     return render(request,"app01/personal/PersonalModify.html")
 
+def personalchange(request):
+    return render(request,"app01/personal/Personal.html")
+
 def searchlist(request):
     return render(request,"app01/SearchList.html")

@@ -144,7 +144,23 @@ img
 	width:100px;
 	height:50px;
 	float:right;
-	margin:80px  80px;
+	margin:80px 80px;
+}
+#submitbutton
+{
+	width:100px;
+	height:50px;
+	float:left;
+	margin-top:80px;
+	margin-left:40px;
+}
+#returnbutton
+{
+	width:100px;
+	height:50px;
+	float:left;
+	margin-top:80px;
+	margin-left:40px;
 }
 .info-content
 {

@@ -32,6 +32,7 @@ urlpatterns = [
 
     path('personal/',views.personal),
     path('personalmodify/',views.personalmodify),
+    path('personalchanged/',views.personalchange),
 
     path('searchlist/',views.searchlist),
 ]

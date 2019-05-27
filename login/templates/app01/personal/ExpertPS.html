@@ -12,7 +12,7 @@
 		<!--//webfonts-->
     <title>个人空间</title>
     <link href="/static/individual/css/personal.css" rel='stylesheet' type='text/css' />
-	
+
 </head>
 <body>
 	<div class="top-sign">
@@ -39,7 +39,11 @@
             </div>
 			<div id="person-list">
                 <ul class="nav nav-pills nav-stacked">
-                  <li class="active"><a href="#info" data-toggle="pill">个人信息修改</a></li>
+                  <li class="active"><a href="#info" data-toggle="pill">个人信息</a></li>
+                  <li><a href="#account" data-toggle="pill">账户余额</a></li>
+                  <li><a href="#message" data-toggle="pill">我的消息</a></li>
+                  <li><a href="#notice" data-toggle="pill">通知</a></li>
+                  <li><a href="#assets" data-toggle="pill">我的科技成果</a></li>
                 </ul>
 			</div>
         </div>
@@ -71,23 +75,40 @@
                         	</ul>
                         </div>
                         <div class="bellyright">
-                            <form action="/personalchanged/" method="get" style="padding-bottom:0px;">
-                                <div class="info-list2"><input name="user_name" type="text" class="form-control" placeholder="{}"></div>
-                                <div class="info-list2"><input name="real_name" type="text" class="form-control" placeholder="{}"></div>
-                                <div class="info-list2"><input name="tel" type="text" class="form-control" placeholder="{}"></div>
-                                <div class="info-list2"><input name="email" type="text" class="form-control" placeholder="{}"></div>
-                                <div class="info-list3"><textarea name="basic_info" class="form-control" rows="8">{}</textarea></div>
-                                <div id="submitbutton">
-									<button type="submit" class="btn btn-primary">提交修改</button>
-                        		</div>
-                            </form>
-                            <form action="/personal/" method="get" style="padding-bottom:0px;">
-                            	<div id="returnbutton">
-									<button type="submit" class="btn btn-primary">退出修改</button>
-                        		</div>
-                            </form>
-                        </div>
+                            <ul>
+                                <li class="info-list">
+                                    <div class="info-content">{}</div>
+                                </li>
+                                <li class="info-list">
+                                    <div class="info-content">{}</div>
+                                </li>
+                                <li class="info-list">
+                                    <div class="info-content">{}</div>
+                                </li>
+                                <li class="info-list">
+                                    <div class="info-content">{}</div>
+                                </li>
+                        	</ul>
+                            <div id="basic_info">{}</div>
+                            <div id="modifybutton">
+                                <form action="/personalmodify/" method="get">
+                                    <button type="submit" class="btn btn-primary">修改个人信息</button>
+                                </form>
+                            </div>
+                    	</div>
                     </div>
+                </div>
+                <div class="tab-pane fade" id="account">
+                    点击查询并显示账户余额，之后会加入充值接口。
+                </div>
+                <div class="tab-pane fade" id="message">
+                    此处显示消息列表。之后用下拉列表分成通知和普通消息两项，可以参考知网代码。
+                </div>
+                <div class="tab-pane fade" id="notice">
+                    此处显示通知消息。
+                </div>
+                <div class="tab-pane fade" id="assets">
+                    如果是专家则展示所有科技成果列表，并提供上传新科技成果接口，点开某一条目跳转到修改科技成果界面。如果是普通用户则显示无成果，并提供跳转到专家认证页面的接口（我之后会写）。
                 </div>
             </div>
         </div>
