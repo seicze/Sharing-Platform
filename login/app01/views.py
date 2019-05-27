@@ -120,4 +120,10 @@ def logout(request):
 
 
 def personal(request):
-    return render(request,"app01/Personal.html")
+    return render(request,"app01/personal/Personal.html")
+
+def personalmodify(request):
+    return render(request,"app01/personal/PersonalModify.html")
+
+def searchlist(request):
+    return render(request,"app01/SearchList.html")
