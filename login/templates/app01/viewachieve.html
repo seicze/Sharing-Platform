@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <link href="/static/css/bootstrap.css" rel='stylesheet' type='text/css' />
-    <link href="/static/css/viewachieve.css" rel='stylesheet' type='text/css' />
-    <link href="/static/css/bootstrap-select.min.css" rel='stylesheet' type='text/css' />
+    <link href="/static/css/bootstrap-select.min.css" rel='stylesheet' type='text/css' /><link href="/static/css/viewachieve.css" rel='stylesheet' type='text/css' />
 	<meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="/static/js/jquery-3.4.1.min.js"></script>
     <script src="/static/js/bootstrap.js"></script>
@@ -61,23 +60,20 @@
             <h2 href="#">标题</h2>
             <div class="key-content">
                 <div class="love-wr">
-                    <a class="view-src">
-                        来源：xx
-                    </a>
-                    <a class="wr-n">
-                        阅读量：xx
-                    </a>
+                    <a  class=" color-src">来源：</a>
+                    <a class="mar-src  color-src">xx</a>
+                    <a class="mar-src  color-src">阅读量：xx</a>
                 </div>
-                <div class="author-wr">
-                    <a class="label">作者：</a>
-                    <a class="author-text" href="#">作者的名字</a>
-                </div>
-                <div class="abstract-wr div-inline">
-                    <div class="label" >摘要：</div>
-                    <a class="abstract" >摘要内容巴拉巴拉摘要内容巴拉巴拉摘要内容巴拉巴拉摘要内容巴拉巴拉摘要内容巴拉巴拉摘要内容巴拉巴拉摘要内容巴拉巴拉摘要内容巴拉巴拉摘要内容巴拉巴拉摘要内容巴拉巴拉摘要内容巴拉巴拉摘要内容巴拉巴拉</a>
-                </div>
+                <div class="author-wr ">
+                    <p class="label div-inline">作者：</p>
+                    <p class="author-text" href="#">作者的名字</p>
+                </p>
                 <div class="abstract-wr ">
-                    <a class="label" >关键词：</a>
+                    <p class="label div-inline" >摘要：</p>
+                    <p class="abstract div-inline" >摘要内容巴拉巴拉摘要内容巴拉巴拉摘要内容巴拉巴拉摘要内容巴拉巴拉摘要内容巴拉巴拉摘要内容巴拉巴拉摘要内容巴拉巴拉摘要内容巴拉巴拉摘要内容巴拉巴拉摘要内容巴拉巴拉摘要内容巴拉巴拉摘要内容巴拉巴拉</d>
+                </d>
+                <div class="abstract-wr ">
+                    <p class="label" >关键词：</p>
                     <span class="abstract-wr" >
                         <!--准备写for循环-->
                         <a href="#">关键词一</a></span>
@@ -85,8 +81,16 @@
                     </span>
                 </div>
                 <div class="author-wr">
-                    <a class="label">被引量：</a>
+                    <p class="label">被引量：</p>
                     <a class="author-text" href="#">个数</a>
+                </div>
+            </p>
+            <div class="subinfo">
+                <div class="subinfo-tool">
+                    <button class="btn btn-primary ">收藏</button>
+                    <button class="btn btn-info ">引用</button>
+                    <button class="btn btn-warning ">报错</button>
+                    <button class="btn btn-success ">分享</button>
                 </div>
             </div>
             <div class="paper-src-wr">
@@ -118,6 +122,7 @@
                 </div>
 
             </div>
+
         </div>
 
     </div>
