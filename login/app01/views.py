@@ -2,7 +2,7 @@ from django.shortcuts import render,HttpResponseRedirect
 from django.contrib import auth
 # from app01.myform import User as FUser
 # from app01.models import User
-from app01.models import Account
+from app01.models import Account,TMessage
 from django.contrib import messages
 from django import forms
 from django.core.exceptions import ValidationError
@@ -122,3 +122,12 @@ def logout(request):
 # 查看科技成果
 def viewachieve(request):
     return render(request,'app01/viewachieve.html')
+
+
+def message(request):
+    user_id = request.session.get('user_id', False)
+    print(user_id)
+    if not user_id:
+        return render(request, 'app01/login.html')
+    result = TMessage.objects.filter(receive_id=user_id).order_by('send_date')
+    return render(request, 'app01/message.html', {'data': result})
