@@ -17,6 +17,18 @@
 </head>
 <style>
     .keyword{color:red;}
+    .search_result-container{
+        width:70em;
+        margin:auto;
+    }
+    .search_result-item{
+        width:100%;
+        margin-bottom:2em;
+
+    }
+    .search_result-url{
+        font-size:1.7em
+    }
 </style>
 <body>
     <nav class="navbar navbar-default" role="navigation">
@@ -98,32 +110,28 @@
             </div>
         </form>
     </div>
-
-    {% load highlight %}{% load more_like_this %}
-    {% if query %}
-        <h3>搜索结果如下：</h3>
-        <div class="search_result_container">
-        {% for result in page.object_list %}
-
-            <div class="search_result_item">
-                <p>
-                    <!--待修改--><a href="/userinfoView/{{result.object.user_id}}" target="_blank">{{ result.object.user_name }} </a><br/>
-                    {% highlight result.text with query css_class "keyword" %}
-                    {% more_like_this entry as related_content %}
-                </p>
-            </div>
-
-        {% empty %}
-            <p>啥也没找到</p>
-        {% endfor %}
-        </div>
-        {% if page.has_previous or page.has_next %}
-            <div>
-                {% if page.has_previous %}<a href="?q={{ query }}&amp;page={{ page.previous_page_number }}">{% endif %}&laquo; 上一页{% if page.has_previous %}</a>{% endif %}
-            |
-                {% if page.has_next %}<a href="?q={{ query }}&amp;page={{ page.next_page_number }}">{% endif %}下一页 &raquo;{% if page.has_next %}</a>{% endif %}
-            </div>
+    <div class="search_result-container">
+        {% load highlight %}{% load more_like_this %}
+        {% if query %}
+            {% for result in page.object_list %}
+                <div class="search_result-item">
+                    <p>
+                        <!--待修改--><a href="/userinfoView/{{result.object.user_id}}" target="_blank" class="search_result-url">{{ result.object.user_name }} </a><br/>
+                        {% highlight result.text with query css_class "keyword" %}
+                        {% more_like_this entry as related_content %}
+                    </p>
+                </div>
+            {% empty %}
+                <p>啥也没找到</p>
+            {% endfor %}
+            {% if page.has_previous or page.has_next %}
+                <div>
+                    {% if page.has_previous %}<a href="?q={{ query }}&amp;page={{ page.previous_page_number }}">{% endif %}&laquo; 上一页{% if page.has_previous %}</a>{% endif %}
+                |
+                    {% if page.has_next %}<a href="?q={{ query }}&amp;page={{ page.next_page_number }}">{% endif %}下一页 &raquo;{% if page.has_next %}</a>{% endif %}
+                </div>
+            {% endif %}
         {% endif %}
-    {% endif %}
+    </div>
 </body>
 </html>
