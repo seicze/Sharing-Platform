@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from app01 import views
+from app01 import views,resource
 from django.conf.urls import url,include
 
 urlpatterns = [
@@ -30,5 +30,7 @@ urlpatterns = [
     path(r'userinfoView/<int:user_id>/', views.userinfoView),
     #path('search/', views.search),
     path(r'search/', include('haystack.urls')),
-    path(r'message/', views.message)
+    path(r'message/', views.message),
+    path(r'essay/', resource.essayView),
+
 ]
