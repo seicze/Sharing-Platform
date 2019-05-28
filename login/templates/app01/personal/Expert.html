@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="/static/css/bootstrap.css" rel='stylesheet' type='text/css' />
+    <link href="/static/css/expert.css" rel='stylesheet' type='text/css' />
+    <link href="/static/css/bootstrap-select.min.css" rel='stylesheet' type='text/css' />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="/static/js/jquery-3.4.1.min.js"></script>
+    <script src="/static/js/bootstrap.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap-hover-dropdown/2.2.1/bootstrap-hover-dropdown.min.js"></script>
+    <script src="/static/js/bootstrap-select.min.js"></script>
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!--webfonts-->
+    <title>Title</title>
+</head>
+<body>
+    <nav class="navbar navbar-fixed-top navbar-default" role="navigation">
+        <div class="container-fluid" >
+            <div class="nav navbar-default  navbar-header">
+                <a class="navbar-brand" href="#">xfjz</a>
+            </div>
+            <div>
+                <ul class="nav navbar-nav nav-pills navbar-left">
+
+                            <li ><a href="#">主页</a></li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">
+                                    成果分类
+                                    <b class="caret"></b>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">工科</a></li>
+                                    <li><a href="#">理科</a></li>
+                                    <li><a href="#">农科</a></li>
+                                </ul>
+                            </li>
+                        <li><a href="#">专利大厅</a></li>
+                </ul>
+            </div>
+            <div>
+                    <ul class="nav navbar-nav nav-pills navbar-right">
+                         <ul class="nav navbar-nav right">
+                                {% if not user %}
+                                    <li><a href="/registerView/">注册/登录</a></li>
+                                {% else %}
+                                    <li><a>您已经登录</a></li>
+                                    <li><a href="/accounts/login/">注销</a></li>
+                                    <li><a href="/userinfoView/{{user}}">个人信息</a></li>
+                                {% endif %}
+                        </ul>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="ex-main">
+        <div class="wrap topInfo kcmsAu">
+          <div class="baseInfo">
+            <div class="info">
+              <h2 class="name">吴晶莹</h2>
+              <p class="orgn"><a onclick="&#10;                    TurnPageToKnet('in','中央美术学院','0267892')&#10;                  " target="kcmstarget">中央美术学院</a></p>
+              <p class="doma">文艺理论;美术书法雕塑与摄影;中国文学;</p>
+              <p class="num"><span>
+                        总发文量：10</span><span>
+                        总下载量：1271</span></p>
+              <div class="sideLink">
+                  <span class="shareBoard" onmouseover="$('#sharedet').show();$('#this').addClass('shareBoardCUR')" onmouseout="$('#sharedet').hide();$('#this').removeClass('shareBoardCUR')"><a class="icon icon-share" href="#"><i></i>分享到<em></em></a>
+                      <script>
+              ShareAU("shareHide",'吴晶莹');
+            </script><ul class="shareHide" id="sharedet" style="display: none;"><li><a title="复制链接" class="copy" onclick="CopyToClipboard()" href="javascript:void(0);"><i></i>复制链接</a></li><li><a title="分享到新浪微博" class="xl" onclick="ShareActionAU('吴晶莹','xl')" href="javascript:void(0);"><i></i>新浪微博</a></li><li><a title="微信扫一扫" class="wx" href="javascript:void(0);"><i></i>微信扫一扫</a> <div class="qrcode"><img alt="" src="//app.cnki.net/Parts/QRCode/Get?source=KCMS&amp;text=http%3A%2F%2Fkns.cnki.net%2Fkcms%2Fdetail%2Fknetsearch.aspx%3Fdbcode%3DCJFQ%26sfield%3Dau%26skey%3D%25e5%2590%25b4%25e6%2599%25b6%25e8%258e%25b9%26code%3D41753043%3B11154723%3B07969536%3B%26uid%3DWEEvREcwSlJHSldRa1FhdkJkVG1BSElYaFptT3Fnd2VHVXdTcDNlbFBJaz0%3D%249A4hF_YAuvQ5obgVAqNKPCYcEjKensW4IQMovwHtwkF4VYPoHbKxJw!!"></div></li></ul></span></div>
+            </div>
+          </div>
+        </div>
+    </div>
+</body>
+</html>

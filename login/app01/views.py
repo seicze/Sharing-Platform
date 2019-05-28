@@ -151,3 +151,5 @@ def recharge(request):
 
 def identify(request):
     return render(request,"app01/identify.html")
+def expert(request):
+    return render(request,"app01/personal/Expert.html")

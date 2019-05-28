@@ -19,7 +19,7 @@ from app01 import views,resource
 from django.conf.urls import url,include
 
 urlpatterns = [
-    path('', views.index),
+    path('', views.expert),
     path('admin/', admin.site.urls),
     path('index/', views.index),
     path('registerView/', views.registerView),
@@ -38,5 +38,5 @@ urlpatterns = [
     path('personalchanged/',views.personalchange),
     path('recharge/',views.recharge),
     path(r'identify/',views.identify),
-
+    path(r'expert/',views.expert)
 ]
