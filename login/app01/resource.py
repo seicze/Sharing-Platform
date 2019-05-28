@@ -14,16 +14,22 @@ def essayView(request):
     paper_id = request.GET['paper_id']
     result = Essay.objects.filter(paper_id=paper_id)
     if not result.exists():
-        messages.success(request, "目标页面不存在！")
-        return render(request, 'app01/viewachieve.html')
+        return HttpResponseRedirect('/index/')
     else:
         result=result[0]
         paper={}
         paper['name']=result.paper_name
         paper['author']=result.author_name
-        paper['summary']=result.summary
+        paper['introduction'] = result.introduction
         paper['institute']=result.institute
-        return render(request, 'app01/viewachieve.html',paper)
+        paper['source'] = result.source
+        paper['keywords'] = result.keywords
+        paper['clicks'] = result.clicks
+        paper['db'] = result.db
+        paper['cssci'] = result.cssci
+        paper['download_link'] = result.download_link
+        paper['published_time'] = result.published_time
+        return render(request, 'app01/viewEssay.html', paper)
 
 def expertView(request):
     expert_id = request.GET['expert_id']

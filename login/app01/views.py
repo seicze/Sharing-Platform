@@ -119,10 +119,6 @@ def logout(request):
 #
     return HttpResponseRedirect('https://www.baidu.com', str)
 
-# 查看科技成果
-def viewachieve(request):
-    return render(request,'app01/viewachieve.html')
-
 
 def message(request):
     user_id = request.session.get('user_id', False)
