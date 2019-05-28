@@ -64,7 +64,7 @@ img
 	width:20%;
 	text-align:center;
 	float:left;
-	background:#DECEFB;
+	background:#DDE0FF;
 }
 .sidehead
 {
@@ -180,4 +180,57 @@ img
 	text-align:center;
 	padding-top:200px;
 }
-
+.ReList
+{
+	height:700px;
+	width:800px;
+	margin-top:20px;
+	margin-left:50px;
+}
+.ReListHead
+{
+	height:40px;
+	width:784px;
+}
+.ReListBody
+{
+	height:660px;
+	width:100%;
+	overflow-x:hidden;
+	overflow-y:auto;
+}
+.ReListInBody
+{
+	height:660px;
+	width:784px;
+}
+#serialnum
+{
+	width:50px;
+}
+#essayname
+{
+	width:300px;
+}
+#author
+{
+	width:180px;
+}
+#publishtime
+{
+	width:150px;
+}
+#cited
+{
+	width:52px;
+}
+#download
+{
+	width:52px;
+}
+<td id="serialnum">序号</td>
+                                        <td id="essayname">文章名称</td>
+                                        <td id="author">作者</td>
+                                        <td id="publishtime">出版时间</td>
+                                        <td id="cited">被引次数</td>
+                                        <td id="download">下载次数</td>

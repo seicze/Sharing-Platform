@@ -148,3 +148,6 @@ def personalchange(request):
 
 def recharge(request):
     return render(request,"app01/recharge.html")
+
+def identify(request):
+    return render(request,"app01/identify.html")

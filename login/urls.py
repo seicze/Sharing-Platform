@@ -37,5 +37,6 @@ urlpatterns = [
     path('personalmodify/',views.personalmodify),
     path('personalchanged/',views.personalchange),
     path('recharge/',views.recharge),
+    path(r'identify/',views.identify),
 
 ]
