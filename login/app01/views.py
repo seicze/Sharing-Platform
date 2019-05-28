@@ -131,3 +131,23 @@ def message(request):
         return render(request, 'app01/login.html')
     result = TMessage.objects.filter(receive_id=user_id).order_by('send_date')
     return render(request, 'app01/message.html', {'data': result})
+
+
+
+def customerps(request):
+    return render(request,"app01/personal/CustomerPS.html")
+
+def expertps(request):
+    return render(request,"app01/personal/ExpertPS.html")
+
+def personalmodify(request):
+    return render(request,"app01/personal/PersonalModify.html")
+
+def personalchange(request):
+    return render(request,"app01/personal/CustomerPS.html")
+
+def recharge(request):
+    return render(request,"app01/recharge.html")
+
+def identify(request):
+    return render(request,"app01/identify.html")
