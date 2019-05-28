@@ -19,7 +19,7 @@ from app01 import views,resource
 from django.conf.urls import url,include
 
 urlpatterns = [
-    path('', views.topup),
+    path('', views.expert),
     path('admin/', admin.site.urls),
     path('index/', views.index),
     path('registerView/', views.registerView),
@@ -31,12 +31,11 @@ urlpatterns = [
     path(r'search/', include('haystack.urls')),
     path(r'message/', views.message),
     path(r'essay/', resource.essayView),
-    path('CustomerPS/',views.customerps),
+    path('PS/',views.customerps),
     path('ExpertPS/',views.expertps),
     path('personalmodify/',views.personalmodify),
     path('personalchanged/',views.personalchange),
     path('recharge/',views.recharge),
     path(r'identify/',views.identify),
-    path(r'expert/',views.expert),
-    path(r'topup/',views.topup)
+    path(r'expert/',views.expert)
 ]
