@@ -24,7 +24,7 @@
     margin: 17px 0 25px;
 
 }
-.wr-n{
+.mar-src{
     margin-right: 25px;
 
 }
@@ -32,6 +32,9 @@
     margin-right: 25px;
     color: #999999;
 
+}
+.color-src{
+    color:#999999;
 }
 .author-wr {
     width: 100%;
@@ -48,7 +51,7 @@
     float: left;
 }
 .author-text{
-    width: 700px;
+    width: 600px;
     color: #06f;
 
 }
@@ -59,7 +62,7 @@
     width: 600px;
     color: #666;
 }
-.div-inline{ display:inline}
+.div-inline{ display:inline-block}
 .ubinfo {
     line-height: 25px;
     padding-bottom: 20px;
@@ -104,6 +107,31 @@
     display: inline-block;
     text-decoration: none;
 }
+
+.subinfo-tool {
+    float: none;
+    display: block;
+    margin-top: 15px;
+    margin-right: 20px;
+    margin-left: 20px;
+}
+.subinfo {
+    line-height: 25px;
+    padding-bottom: 20px;
+    display: inline-block;
+    text-decoration: none;
+}
+a:link{text-decoration:none;} /*指正常的未被访问过的链接*/
+
+a:visited{text-decoration:none;} /*指已经访问过的链接*/
+
+a:hover{text-decoration:none;} /*指鼠标在链接*/
+
+a:active{text-decoration:none;} /*指正在点的链接*/
+
+a:focus{text-decoration:none;}
+
+p{padding:0px; margin:0px;display: inline;}
 
 
 
