@@ -62,16 +62,16 @@
             <div class="key-content">
 
                 <div class="author-wr">
-                    <p class="label">作者：</p>
+                    <p class="label div-inline">作者：</p>
                     <a class="author-text" href="#">{{author}}</a>
                 </div>
                 <div class="author-wr">
-                    <p class="label">机构：</p>
+                    <p class="label div-inline">机构：</p>
                     <a class="author-text" href="#">{{institute}}</a>
                 </div>
                 <div class="abstract-wr div-inline">
-                    <div class="label" >摘要：</div>
-                    <p class="abstract" >{{introduction}}</p>
+                    <div class="label div-inline" >摘要：</div>
+                    <p class="abstract div-inline" >{{introduction}}</p>
                 </div>
                 <div class="abstract-wr ">
                     <p class="label" >关键词：</p>
@@ -86,20 +86,27 @@
 
                 </div>
                 <div class="love-wr">
-                    <p class="wr-n">
+                    <p class="color-src">
                         来源:
-                        <a class="wr-n">
+                        <a class="mar-src  color-src">
                         {{cssci}}
                         </a>
                     </p>
-                    <p class="wr-n">
+                    <p class="mar-src  color-src">
                         数据库：{{db}}
                     </p>
-                    <p class="wr-n">
+                    <p class="mar-src  color-src">
                         阅读量：{{clicks}}
                     </p>
                  </div>
-            </div>
+                     <div class="subinfo">
+                        <div class="subinfo-tool">
+                            <button class="btn btn-primary ">收藏</button>
+                            <button class="btn btn-info ">引用</button>
+                            <button class="btn btn-warning ">报错</button>
+                            <button class="btn btn-success ">分享</button>
+                        </div>
+                    </div>
             <div class="paper-src-wr">
                 <ul id="myTab" class="nav nav-tabs paper-src-tab">
                     <li class="active">
