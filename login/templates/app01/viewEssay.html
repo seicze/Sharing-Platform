@@ -20,12 +20,12 @@
     <nav class="navbar navbar-fixed-top navbar-default" role="navigation">
         <div class="container-fluid" >
             <div class="nav navbar-default  navbar-header">
-                <a class="navbar-brand" href="#">xfjz</a>
+                <a class="navbar-brand" href="/index/">ischolar</a>
             </div>
             <div>
                 <ul class="nav navbar-nav nav-pills navbar-left">
 
-                            <li ><a href="#">主页</a></li>
+                            <li ><a href="/index/">主页</a></li>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">
                                     成果分类
@@ -60,34 +60,45 @@
         <div class="left-view">
             <h2 href="#">{{name}}</h2>
             <div class="key-content">
-                <div class="love-wr">
-                    <a class="view-src">
-                        来源：{{source}}
-                    </a>
-                    <a class="wr-n">
-                        阅读量：xx
-                    </a>
+
+                <div class="author-wr">
+                    <p class="label">作者：</p>
+                    <a class="author-text" href="#">{{author}}</a>
                 </div>
                 <div class="author-wr">
-                    <a class="label">作者：</a>
-                    <a class="author-text" href="#">{{author}}</a>
+                    <p class="label">机构：</p>
+                    <a class="author-text" href="#">{{institute}}</a>
                 </div>
                 <div class="abstract-wr div-inline">
                     <div class="label" >摘要：</div>
-                    <a class="abstract" >{{summary}}</a>
+                    <p class="abstract" >{{introduction}}</p>
                 </div>
                 <div class="abstract-wr ">
-                    <a class="label" >关键词：</a>
+                    <p class="label" >关键词：</p>
                     <span class="abstract-wr" >
                         <!--准备写for循环-->
-                        <a href="#">关键词一</a></span>
-                        <a href="#">关键词二</a></span>
+                        <p href="#">{{keywords}}</p></span>
                     </span>
                 </div>
-                <div class="author-wr">
-                    <a class="label">被引量：</a>
-                    <a class="author-text" href="#">个数</a>
+                <div class="abstract-wr">
+                    <p class="label">时间：</p>
+                    <p class="abstract-wr" href="#">  {{published_time}}</p>
+
                 </div>
+                <div class="love-wr">
+                    <p class="wr-n">
+                        来源:
+                        <a class="wr-n">
+                        {{cssci}}
+                        </a>
+                    </p>
+                    <p class="wr-n">
+                        数据库：{{db}}
+                    </p>
+                    <p class="wr-n">
+                        阅读量：{{clicks}}
+                    </p>
+                 </div>
             </div>
             <div class="paper-src-wr">
                 <ul id="myTab" class="nav nav-tabs paper-src-tab">
@@ -101,18 +112,12 @@
                 <div class="tab-content">
                     <div id="menu1" class="active src-container" role="tabpanel">
                         <span class="item-span">
-                            <a class="item">全部源1</a>
-                        </span>
-                        <span class="item-span">
-                            <a class="item">全部源2</a>
+                            <a class="item" href={{download_link}}>{{source}}</a>
                         </span>
                     </div>
                     <div id="menu2" class="fade src-container" role="tabpanel">
                         <span class="item-span">
-                            <a class="item">免费源1</a>
-                        </span>
-                        <span class="item-span">
-                            <a class="item">免费源2</a>
+                            <a class="item" href={{download_link}}>{{source}}</a>
                         </span>
                     </div>
                 </div>

@@ -96,8 +96,11 @@ class Essay(models.Model):
     type = models.CharField(db_column='Type', max_length=8)  # Field name made lowercase.
     download_link = models.CharField(db_column='Download_link', max_length=255, blank=True, null=True)  # Field name made lowercase.
     download_times = models.PositiveIntegerField(db_column='Download_times', blank=True, null=True)  # Field name made lowercase.
-    summary = models.CharField(db_column='Summary', max_length=1000, blank=True, null=True)  # Field name made lowercase.
     document_id = models.CharField(db_column='Document_id', max_length=255, blank=True, null=True)  # Field name made lowercase.
+    keywords = models.CharField(db_column='keywords', max_length=255, blank=True, null=True)  # Field name made lowercase.
+    clicks = models.IntegerField(db_column='clicks')
+    db = models.CharField(db_column='db', max_length=255, blank=True, null=True)  # Field name made lowercase.
+    cssci = models.CharField(db_column='cssci', max_length=255, blank=True, null=True)  # Field name made lowercase.
 
     class Meta:
         managed = False
