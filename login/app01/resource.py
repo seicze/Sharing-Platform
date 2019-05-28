@@ -16,7 +16,12 @@ def essayView(request):
     if not result.exists():
         return HttpResponseRedirect('/index/')
     else:
-        result=result[0]
+        result = result[0]
+
+        click = Essay.objects.get(paper_id=paper_id)
+        click.clicks = result.clicks + 1
+        click.save()
+
         paper={}
         paper['name']=result.paper_name
         paper['author']=result.author_name
