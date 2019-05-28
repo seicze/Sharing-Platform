@@ -19,7 +19,7 @@
         <nav class="navbar navbar-default" role="navigation">
             <div class="container-fluid" >
                 <div class="nav navbar-default  navbar-header">
-                    <a class="navbar-brand" href="/index/">ischolar</a>
+                    <a class="navbar-brand" href="#">xfjz</a>
                 </div>
                 <div>
                     <ul class="nav navbar-nav nav-pills navbar-left">
@@ -58,7 +58,7 @@
         <div class="sidebar">
         	<div class="sidehead">
             	<img src="/static/images/headicon.png" style="border-radius:50%; border:2px solid #C9DEFE; width:100px; height:100px; margin:40px;">
-                <p align="center" style="margin-top:-20px;">{{user_name}}</p>
+                <p align="center" style="margin-top:-20px;">name</p>
             </div>
 			<div id="person-list">
                 <ul class="nav nav-pills nav-stacked">
@@ -98,19 +98,19 @@
                         <div class="bellyright">
                             <ul>
                                 <li class="info-list">
-                                    <div class="info-content">{{user_name}}</div>
+                                    <div class="info-content">{}</div>
                                 </li>
                                 <li class="info-list">
-                                    <div class="info-content">{{real_name}}</div>
+                                    <div class="info-content">{}</div>
                                 </li>
                                 <li class="info-list">
-                                    <div class="info-content">{{tel}}</div>
+                                    <div class="info-content">{}</div>
                                 </li>
                                 <li class="info-list">
-                                    <div class="info-content">{{email}}</div>
+                                    <div class="info-content">{}</div>
                                 </li>
                         	</ul>
-                            <div id="basic_info">{{basic_info}}</div>
+                            <div id="basic_info">{}</div>
                             <div id="modifybutton">
                                 <form action="/personalmodify/" method="get">
                                     <button type="submit" class="btn btn-primary">修改个人信息</button>
@@ -125,7 +125,7 @@
                     </div>
                     <div class="bodytopline"></div>
                     <div class="lookaccount">
-                    	您的余额：   {{money}}
+                    	您的余额：   {}
                     </div>
                     <form action="/recharge/" method="get" style="margin-left:400px;">
                         <button type="submit" class="btn btn-primary">前往充值</button>
@@ -146,13 +146,5 @@
     <div class="tail">
 
     </div>
-    {% if messages %}
-        <script>
-            {% for msg in messages %}
-                alert('{{ msg.message }}');
-            {% endfor %}
-        </script>
-    {% endif %}
-
 </body>
 </html>

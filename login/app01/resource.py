@@ -34,7 +34,6 @@ def essayView(request):
         paper['cssci'] = result.cssci
         paper['download_link'] = result.download_link
         paper['published_time'] = result.published_time
-        paper['user_id'] = request.session.get('user_id',False)
         return render(request, 'app01/viewEssay.html', paper)
 
 def expertView(request):

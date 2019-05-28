@@ -94,18 +94,17 @@
                         	</ul>
                         </div>
                         <div class="bellyright">
-                            <form action="/personalchanged/" method="post" style="padding-bottom:0px;">
-                                {% csrf_token %}
-                                <div class="info-list2"><input name="user_name" type="text" class="form-control" placeholder="" value={{user_name}} ></div>
-                                <div class="info-list2"><input name="real_name" type="text" class="form-control" placeholder="" value={{real_name}}></div>
-                                <div class="info-list2"><input name="tel" type="text" class="form-control" placeholder="" value={{tel}}></div>
-                                <div class="info-list2"><input name="email" type="text" class="form-control" placeholder="" value={{email}}></div>
-                                <div class="info-list3"><textarea name="basic_info" class="form-control" rows="8">{{basic_info}}</textarea></div>
+                            <form action="/personalchanged/" method="get" style="padding-bottom:0px;">
+                                <div class="info-list2"><input name="user_name" type="text" class="form-control" placeholder="{}"></div>
+                                <div class="info-list2"><input name="real_name" type="text" class="form-control" placeholder="{}"></div>
+                                <div class="info-list2"><input name="tel" type="text" class="form-control" placeholder="{}"></div>
+                                <div class="info-list2"><input name="email" type="text" class="form-control" placeholder="{}"></div>
+                                <div class="info-list3"><textarea name="basic_info" class="form-control" rows="8">{}</textarea></div>
                                 <div id="submitbutton">
 									<button type="submit" class="btn btn-primary">提交修改</button>
                         		</div>
                             </form>
-                            <form action="/PS/" method="get" style="padding-bottom:0px;">
+                            <form action="/CustomerPS/" method="get" style="padding-bottom:0px;">
                             	<div id="returnbutton">
 									<button type="submit" class="btn btn-primary">退出修改</button>
                         		</div>
