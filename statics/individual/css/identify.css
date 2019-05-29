@@ -1,0 +1,81 @@
+.header
+{
+	height: 100px;
+	width: 100%;
+	padding-top:20px;
+}
+.mainbody
+{
+	margin:30px 80px 40px 60px;
+	height:800px;
+	width:auto;
+	
+}
+.bodycenter
+{
+	height:100%;
+	width:70%;
+	margin:0 auto;
+}
+.progressout
+{
+	margin-top:30px;
+	height:10px;
+	width:100%;
+}
+.progresson
+{
+	border-radius:4px;
+	height:7px;
+	width:25%;
+	float:left;
+	background:#ACB8FD;
+}
+.progressdown
+{
+	border-radius:4px;
+	height:7px;
+	width:25%;
+	float:left;
+	background:#E4E4E4;
+}
+.title
+{
+	margin-top:30px;
+	height:50px;
+	width:100%;
+	text-align:center;
+}
+.body
+{
+	margin:20px 10px 30px 10px;
+	height:500px;
+	width:auto;
+	box-shadow:0px 1px 4px 0px rgba(0,0,0,.15);
+	padding-top:1px;
+}
+.choicetab
+{
+	height:90px;
+	width:300px;
+	margin:100px auto;
+	border:solid 1px #69CEFE;
+	border-radius:5px;
+}
+.choicetab:hover
+{
+	border-color:#FE9F52;
+}
+.choice
+{
+	height:100%;
+	width:100%;
+	font-weight:bold;
+	font-size:16px;
+}
+.bodycontainer
+{
+	height:200px;
+	width:400px;
+	margin:100px auto;
+}
