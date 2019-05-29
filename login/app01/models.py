@@ -154,7 +154,7 @@ class Patent(models.Model):
     introduction = models.CharField(db_column='Introduction', max_length=1000, blank=True, null=True)  # Field name made lowercase.
     institute = models.CharField(db_column='Institute', max_length=255, blank=True, null=True)  # Field name made lowercase.
     openness = models.PositiveIntegerField(db_column='Openness')  # Field name made lowercase.
-    public_number = models.CharField(db_column='Public_number', max_length=1000, blank=True, null=True)  # Field name made lowercase.
+    public_content = models.CharField(db_column='Public_content', max_length=1000, blank=True, null=True)  # Field name made lowercase.
     published_time = models.DateField(db_column='Published_time', blank=True, null=True)  # Field name made lowercase.
     owner_id = models.IntegerField(db_column='Owner_id')  # Field name made lowercase.
     owner_name = models.CharField(db_column='Owner_name', max_length=255)  # Field name made lowercase.
@@ -163,21 +163,6 @@ class Patent(models.Model):
     download_link = models.CharField(db_column='Download_link', max_length=255, blank=True, null=True)  # Field name made lowercase.
     download_times = models.PositiveIntegerField(db_column='Download_times', blank=True, null=True)  # Field name made lowercase.
     document_id = models.CharField(db_column='Document_id', max_length=255, blank=True, null=True)  # Field name made lowercase.
-    department = models.CharField(db_column='department', max_length=255, blank=True, null=True)
-    appliant = models.CharField(db_column='appliant', max_length=255, blank=True, null=True)
-    keywords = models.CharField(db_column='keywords', max_length=255, blank=True, null=True)
-    address = models.CharField(db_column='address', max_length=255, blank=True, null=True)
-    agent = models.CharField(db_column='agent', max_length=255, blank=True, null=True)
-    agency = models.CharField(db_column='agency', max_length=255, blank=True, null=True)
-    code = models.IntegerField(db_column='code')
-    sovereignty = models.CharField(db_column='sovereignty', max_length=2000, blank=True, null=True)
-    page = models.IntegerField(db_column='page')
-    main_cls_num = models.CharField(db_column='main_cls_num', max_length=255, blank=True, null=True)
-    patent_cls_num = models.CharField(db_column='patent_cls_num', max_length=255, blank=True, null=True)
-    app_num = models.CharField(db_column='app_num', max_length=255, blank=True, null=True)
-    app_date = models.DateField(db_column='app_date', blank=True, null=True)  # Field name made lowercase.
-    clicks = models.IntegerField(db_column='clicks')
-    source = models.CharField(db_column='Source', max_length=255, blank=True, null=True)  # Field name made lowercase.
 
     class Meta:
         managed = False

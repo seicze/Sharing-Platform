@@ -194,11 +194,8 @@ def confirmM(request):
 def confirmI(request):
     return render(request,"app01/identify/confirmI.html")
 
-def confirmM2(request):
-    return render(request,"app01/identify/confirmM2.html")
-
-def confirmI2(request):
-    return render(request,"app01/identify/confirmI2.html")
+def confirminfo(request):
+    return render(request,"app01/identify/confirminfo.html")
 
 def success(request):
     return render(request,"app01/identify/success.html")

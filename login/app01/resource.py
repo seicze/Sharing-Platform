@@ -48,37 +48,12 @@ def expertView(request):
         return HttpResponse("<h1>"+result[0].name+"</h1><h2>"+result[0].position+"</h2><h3>"+result[0].institute+"</h3><h4>"+result[0].direction+"</h3><h4>"+result[0].contact+"</h4><p>"+result[0].introduction+"</p>")
 
 def patentView(request):
-    patent_id = request.GET['patent_id']
+    patent_id = request.GET['paper_id']
     result = Patent.objects.filter(patent_id=patent_id)
 
     if not result.exists():
-        return HttpResponseRedirect('/index/')
+        messages.success(request, "目标不存在！")
+        return HttpResponseRedirect('patent/')
     else:
-        result = result[0]
-
-        click = Patent.objects.get(patent_id=patent_id)
-        click.clicks = result.clicks + 1
-        click.save()
-
-        patent={}
-        patent['name']=result.patent_name
-        patent['author']=result.author_name
-        patent['introduction'] = result.introduction
-        patent['clicks'] = result.clicks
-        patent['app_number']=result.app_num
-        patent['app_date']=result.app_date
-        patent['publish_number'] = result.public_number
-        patent['published_time'] = result.published_time
-        patent['source'] = result.source
-        patent['appliant'] = result.appliant
-        patent['address'] = result.address
-        patent['agency'] = result.agency
-        patent['agent'] = result.agent
-        patent['main_cls_num']=result.main_cls_num
-        patent['patent_cls_num']=result.patent_cls_num
-        patent['code']=result.code
-        patent['page']=result.page
-        #patent['download_link'] = result.download_link
-        patent['user_id'] = request.session.get('user_id',False)
-        return render(request, 'app01/viewPatent.html', patent)
+        return HttpResponse("<h1>"+result[0].patent_name+"</h1><h2>"+result[0].author_name+"</h2><h3>"+result[0].institute+"</h3><p>"+result[0].introduction+"</p>")
 
