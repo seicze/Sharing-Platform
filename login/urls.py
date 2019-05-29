@@ -19,24 +19,29 @@ from app01 import views,resource
 from django.conf.urls import url,include
 
 urlpatterns = [
-    path('', views.index),
+    path('', views.expert),
     path('admin/', admin.site.urls),
     path('index/', views.index),
     path('registerView/', views.registerView),
     path('register/', views.register),
     path('login/', views.login),
-    path('viewachieve/', views.viewachieve),
     path('accounts/login/', views.logout),
     path(r'userinfoView/<int:user_id>/', views.userinfoView),
     #path('search/', views.search),
     path(r'search/', include('haystack.urls')),
     path(r'message/', views.message),
     path(r'essay/', resource.essayView),
-    path('CustomerPS/',views.customerps),
+    path('PS/',views.customerps),
     path('ExpertPS/',views.expertps),
     path('personalmodify/',views.personalmodify),
     path('personalchanged/',views.personalchange),
     path('recharge/',views.recharge),
     path(r'identify/',views.identify),
-
+    path(r'confirmM/',views.confirmM),
+    path(r'confirmI/',views.confirmI),
+    path(r'confirmM2/', views.confirmM2),
+    path(r'confirmI2/', views.confirmI2),
+    path(r'success/', views.success),
+    path(r'expert/',views.expert),
+    path(r'topup/',views.topup),
 ]

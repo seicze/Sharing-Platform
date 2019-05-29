@@ -119,10 +119,6 @@ def logout(request):
 #
     return HttpResponseRedirect('https://www.baidu.com', str)
 
-# 查看科技成果
-def viewachieve(request):
-    return render(request,'app01/viewachieve.html')
-
 
 def message(request):
     user_id = request.session.get('user_id', False)
@@ -135,19 +131,80 @@ def message(request):
 
 
 def customerps(request):
-    return render(request,"app01/personal/CustomerPS.html")
+    user_id = request.session.get('user_id', False)
+    if not user_id:
+        return HttpResponseRedirect('app01/login.html')
+    else:
+        result = Account.objects.filter(user_id=user_id)
+        result=result[0]
+        dic={}
+        dic['user_name']=result.user_name
+        dic['real_name'] = result.real_name
+        dic['tel'] = result.tel
+        dic['email'] = result.email
+        dic['basic_info'] = result.basic_info
+        dic['money'] = result.money
+        dic['user_id'] = user_id
+        return render(request,"app01/personal/CustomerPS.html",dic)
 
 def expertps(request):
     return render(request,"app01/personal/ExpertPS.html")
 
 def personalmodify(request):
-    return render(request,"app01/personal/PersonalModify.html")
+    user_id = request.session.get('user_id', False)
+    if not user_id:
+        HttpResponseRedirect('app01/login.html')
+    else:
+        result = Account.objects.filter(user_id=user_id)
+        result = result[0]
+        dic = {}
+        dic['user_name'] = result.user_name
+        dic['real_name'] = result.real_name
+        dic['tel'] = result.tel
+        dic['email'] = result.email
+        dic['basic_info'] = result.basic_info
+        dic['user_id'] = user_id
+        return render(request, "app01/personal/PersonalModify.html", dic)
+
 
 def personalchange(request):
-    return render(request,"app01/personal/CustomerPS.html")
+    user_id = request.session.get('user_id', False)
+    if not user_id:
+        return HttpResponseRedirect('app01/login.html')
+    else:
+        account = Account.objects.get(user_id=user_id)
+        account.user_name=request.POST['user_name']
+        account.real_name=request.POST['real_name']
+        account.tel=request.POST['tel']
+        account.email=request.POST['email']
+        account.basic_info=request.POST['basic_info']
+        account.save()
+        messages.success(request, "个人信息修改成功")
+        return HttpResponseRedirect("/PS/")
 
 def recharge(request):
     return render(request,"app01/recharge.html")
 
 def identify(request):
-    return render(request,"app01/identify.html")
+    return render(request,"app01/identify/identify.html")
+
+def confirmM(request):
+    return render(request,"app01/identify/confirmM.html")
+
+def confirmI(request):
+    return render(request,"app01/identify/confirmI.html")
+
+def confirmM2(request):
+    return render(request,"app01/identify/confirmM2.html")
+
+def confirmI2(request):
+    return render(request,"app01/identify/confirmI2.html")
+
+def success(request):
+    return render(request,"app01/identify/success.html")
+
+def expert(request):
+    return render(request,"app01/personal/Expert.html")
+
+def topup(request):
+    return render(request,"app01/TopUp.html")
