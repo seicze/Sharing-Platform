@@ -13,7 +13,7 @@
     <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
     <!--webfonts-->
     <!--//下方修改为成果名称-->
-    <title>{{name}}-ischolar-论文数据库</title>
+    <title>{{name}}-ischolar-专利数据库</title>
 </head>
 <body>
 <!--导航栏-->
@@ -60,40 +60,63 @@
         <div class="left-view">
             <h2 href="#">{{name}}</h2>
             <div class="key-content">
-
                 <div class="author-wr">
-                    <p class="label div-inline">作者：</p>
+                    <p class="label div-inline">申请号：</p>
+                    <p class="author-text" href="#">{{app_number}}</p>
+                </div>
+                <div class="author-wr">
+                    <p class="label div-inline">申请日：</p>
+                    <p class="author-text" href="#">{{app_date}}</p>
+                </div>
+                <div class="author-wr">
+                    <p class="label div-inline">公开号：</p>
+                    <p class="author-text" href="#">{{publish_number}}</p>
+                </div>
+                <div class="author-wr">
+                    <p class="label div-inline">公开日：</p>
+                    <p class="author-text" href="#">{{published_time}}</p>
+                </div>
+                <div class="author-wr">
+                    <p class="label div-inline">申请人：</p>
+                    <p class="author-text" href="#">{{appliant}}</p>
+                </div>
+                <div class="author-wr">
+                    <p class="label div-inline">地址：</p>
+                    <p class="author-text" href="#">{{address}}</p>
+                </div>
+                <div class="author-wr">
+                    <p class="label div-inline">发明人：</p>
                     <a class="author-text" href="#">{{author}}</a>
                 </div>
                 <div class="author-wr">
-                    <p class="label div-inline">机构：</p>
-                    <a class="author-text" href="#">{{institute}}</a>
+                    <p class="label div-inline">代理机构：</p>
+                    <p class="author-text" href="#">{{agency}}</p>
+                </div>
+                <div class="author-wr">
+                    <p class="label div-inline">代理人：</p>
+                    <p class="author-text" href="#">{{agent}}</p>
+                </div>
+                <div class="author-wr">
+                    <p class="label div-inline">国省代码：</p>
+                    <p class="author-text" href="#">{{code}}</p>
                 </div>
                 <div class="abstract-wr div-inline">
                     <div class="label div-inline" >摘要：</div>
                     <p class="abstract div-inline" >{{introduction}}</p>
                 </div>
-                <div class="abstract-wr ">
-                    <p class="label" >关键词：</p>
-                    <span class="abstract-wr" >
-                        <!--准备写for循环-->
-                        <p href="#">{{keywords}}</p></span>
-                    </span>
-                </div>
-                <div class="abstract-wr">
-                    <p class="label">时间：</p>
-                    <p class="abstract-wr" href="#">  {{published_time}}</p>
 
-                </div>
                 <div class="love-wr">
                     <p class="color-src">
-                        来源:
+                        页数:
                         <a class="mar-src  color-src">
-                        {{cssci}}
+                        {{page}}
                         </a>
                     </p>
                     <p class="mar-src  color-src">
-                        数据库：{{db}}
+                        主专利号：{{main_cls_num}}
+                    </p>
+                    <p class="mar-src  color-src">
+                        专利分类号：{{patent_cls_num}}
                     </p>
                     <p class="mar-src  color-src">
                         阅读量：{{clicks}}

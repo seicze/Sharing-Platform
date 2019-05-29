@@ -31,6 +31,7 @@ urlpatterns = [
     path(r'search/', include('haystack.urls')),
     path(r'message/', views.message),
     path(r'essay/', resource.essayView),
+    path(r'patent/', resource.patentView),
     path('PS/',views.customerps),
     path('ExpertPS/',views.expertps),
     path('personalmodify/',views.personalmodify),
