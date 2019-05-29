@@ -186,7 +186,23 @@ def recharge(request):
     return render(request,"app01/recharge.html")
 
 def identify(request):
-    return render(request,"app01/identify.html")
+    return render(request,"app01/identify/identify.html")
+
+def confirmM(request):
+    return render(request,"app01/identify/confirmM.html")
+
+def confirmI(request):
+    return render(request,"app01/identify/confirmI.html")
+
+def confirmM2(request):
+    return render(request,"app01/identify/confirmM2.html")
+
+def confirmI2(request):
+    return render(request,"app01/identify/confirmI2.html")
+
+def success(request):
+    return render(request,"app01/identify/success.html")
+
 def expert(request):
     return render(request,"app01/personal/Expert.html")
 
