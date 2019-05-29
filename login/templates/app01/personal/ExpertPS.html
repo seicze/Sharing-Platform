@@ -63,6 +63,7 @@
                 <ul class="nav nav-pills nav-stacked">
                   <li class="active"><a href="#info" data-toggle="pill">个人信息</a></li>
                   <li><a href="#account" data-toggle="pill">账户余额</a></li>
+                  <li><a href="#display" data-toggle="pill">维护展示信息</a></li>
                   <li><a href="#assets" data-toggle="pill">我的科技成果</a></li>
                 </ul>
 			</div>
@@ -129,6 +130,50 @@
                     <form action="/recharge/" method="get" style="margin-left:400px;">
                         <button type="submit" class="btn btn-primary">前往充值</button>
                     </form>
+                </div>
+                <div class="tab-pane fade" id="display">
+                	<div class="bodytop">
+                    	维护展示信息
+                    </div>
+                    <div class="bodytopline"></div>
+                    <div class="bodybelly">
+                    	<div class="bellyleft">
+                        	<ul>
+                                <li class="info-list">
+                                    姓名:
+                                </li>
+                                <li class="info-list">
+                                    所属机构:
+                                </li>
+                                <li class="info-list">
+                                    所在职位：
+                                </li>
+                                <li class="info-list">
+                                    研究方向：
+                                </li>
+                                <li class="info-list">
+                                    联系方式：
+                                </li>
+                                <li class="info-list">
+                                    个人简介：
+                                </li>
+                        	</ul>
+                        </div>
+                        <div class="bellyright">
+                            <form action="" method="post" style="padding-bottom:0px;">
+                                {% csrf_token %}
+                                <div class="info-list2"><input name="name" type="text" class="form-control" placeholder="" value={{name}} ></div>
+                                <div class="info-list2"><input name="institute" type="text" class="form-control" placeholder="" value={{institute}}></div>
+                                <div class="info-list2"><input name="position" type="text" class="form-control" placeholder="" value={{position}}></div>
+                                <div class="info-list2"><input name="direction" type="text" class="form-control" placeholder="" value={{direction}}></div>
+                                <div class="info-list2"><input name="contact" type="text" class="form-control" placeholder="" value={{contact}}></div>
+                                <div class="info-list3"><textarea name="introduction" class="form-control" rows="8">{{introduction}}</textarea></div>
+                                <div id="thirdbutton">
+									<button type="submit" class="btn btn-primary">提交修改</button>
+                        		</div>
+                            </form>
+                        </div>
+                    </div>
                 </div>
                 <div class="tab-pane fade" id="assets">
                 	<div class="bodytop">

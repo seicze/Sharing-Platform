@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="refresh" content="5;/index/">
+    <meta http-equiv="refresh" content="10;/index/">
     <link href="/static/css/style.css" rel='stylesheet' type='text/css' />
     <link href="/static/css/bootstrap.css" rel='stylesheet' type='text/css' />
     <script src="/static/js/jquery-3.4.1.min.js"></script>
@@ -62,16 +62,16 @@
                 <div class="progressdown"></div>
                 <div class="progresson"></div>
             </div>
-            <div class="title"><h4>认证成功，返回首页</h4></div>
+            <div class="title"><h4>申请提交成功，请耐心等待管理员审核</h4></div>
             <div class="body">
             	<div class="bodycontainer" style="text-align:center; vertical-align:middle;">
-                	<span id="count">5</span>后，跳转...
+                	<span id="count">10</span>秒后返回首页
                 </div>
             </div>
         </div>
     </div>
 	<script type="text/javascript">
-        var count =5;
+        var count =10;
         function back2index(){
             document.getElementById("count").innerHTML = count
             setTimeout("back2index()",1000)
