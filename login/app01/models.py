@@ -168,3 +168,11 @@ class Patent(models.Model):
         managed = False
         db_table = 'patent'
 
+
+class HotSpot(models.Model):
+    num = models.IntegerField(db_column='num')  # Field name made lowercase.
+    keyword = models.CharField(db_column='keyword', max_length=255, primary_key= True)  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'hotspot'

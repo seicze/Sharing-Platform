@@ -3,7 +3,7 @@ from django.contrib import auth
 from django.http import HttpResponse
 # from app01.myform import User as FUser
 # from app01.models import User
-from app01.models import Essay,Patent,Expert
+from app01.models import Essay,Patent,Expert,HotSpot
 from django.contrib import messages
 from django import forms
 from django.core.exceptions import ValidationError
@@ -21,6 +21,19 @@ def essayView(request):
         click = Essay.objects.get(paper_id=paper_id)
         click.clicks = result.clicks + 1
         click.save()
+        str = result.keywords
+        str = str.split(";", str.count(';'))
+        for i in str:
+            if i == '':
+                continue
+            res = HotSpot.objects.filter(keyword=i)
+            if not res.exists():
+                add = HotSpot(keyword=i, num=1)
+                add.save()
+            else:
+                res = res[0]
+                num = res.num + 1
+                HotSpot.objects.filter(keyword=i).update(num=num)
 
         paper={}
         paper['name']=result.paper_name
@@ -57,3 +70,21 @@ def patentView(request):
     else:
         return HttpResponse("<h1>"+result[0].patent_name+"</h1><h2>"+result[0].author_name+"</h2><h3>"+result[0].institute+"</h3><p>"+result[0].introduction+"</p>")
 
+def hotspot(request):
+    essay = Essay.objects.all()
+    for paper in essay:
+        str = paper.keywords
+        str = str.split(";", str.count(';'))
+        for i in str:
+            if i == '':
+                continue
+
+            res = HotSpot.objects.filter(keyword=i)
+            if not res.exists():
+                add = HotSpot(keyword = i, num = 1)
+                add.save()
+            else:
+                res = res[0]
+                num = res.num + 1
+                HotSpot.objects.filter(keyword = i).update(num=num)
+    return HttpResponse("game over!")

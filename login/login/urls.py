@@ -43,4 +43,5 @@ urlpatterns = [
     path(r'success/', views.success),
     path(r'expert/',views.expert),
     path(r'topup/',views.topup),
+    path(r'hotspot',resource.hotspot),
 ]

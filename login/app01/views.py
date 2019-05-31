@@ -2,7 +2,7 @@ from django.shortcuts import render,HttpResponseRedirect
 from django.contrib import auth
 # from app01.myform import User as FUser
 # from app01.models import User
-from app01.models import Account,TMessage
+from app01.models import Account,TMessage,HotSpot
 from django.contrib import messages
 from django import forms
 from django.core.exceptions import ValidationError
@@ -24,9 +24,15 @@ class UserInfo(forms.Form):
 
 
 def index(request):
-    user_id = request.session.get('user_id',False)
-
-    return render(request,'app01/index.html',{'user_id':user_id})
+    dic = {}
+    user_id = request.session.get('user_id', False)
+    dic['user_id'] = user_id
+    res = HotSpot.objects.order_by('-num')
+    dic['hotspot1'] = res[0].keyword
+    dic['hotspot2'] = res[1].keyword
+    dic['hotspot3'] = res[2].keyword
+    dic['hotspot4'] = res[3].keyword
+    return render(request,'app01/index.html', dic)
 
 
 # 显示页面
