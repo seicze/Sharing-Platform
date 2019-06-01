@@ -1,14 +1,14 @@
 from django.shortcuts import render,HttpResponseRedirect
-from django.contrib import auth
 from django.http import HttpResponse
-# from app01.myform import User as FUser
-# from app01.models import User
 from app01.models import Essay,Patent,Expert,HotSpot
 from django.contrib import messages
-from django import forms
-from django.core.exceptions import ValidationError
-from django.contrib.auth.decorators import login_required
+from wordcloud import WordCloud, ImageColorGenerator
+from PIL import Image
+import matplotlib.pyplot as plt
+import numpy as np
+import pyecharts
 # Create your views here.
+
 
 def essayView(request):
     paper_id = request.GET['paper_id']
@@ -88,3 +88,32 @@ def hotspot(request):
                 num = res.num + 1
                 HotSpot.objects.filter(keyword = i).update(num=num)
     return HttpResponse("game over!")
+
+def geneWordCloud(request):
+    name = []
+    value = []
+    res = HotSpot.objects.order_by('-num')
+    for i in range(100):
+        name.append(res[i].keyword)
+        value.append(res[i].num)
+    name = " ".join(name)
+    #worldcloud = WordCloud(width = 1300,height = 620)
+    #worldcloud.add('',name,value,word_size_range = [20,100])
+#    return worldcloud.render('app01/WC.html')
+    #coloring = np.array(Image.open("./data/huangbo.jpg"))
+
+    # simkai.ttf 必填项 识别中文的字体，例：simkai.ttf，
+    coloring = np.array(Image.open("mask.jpg"))
+    my_wordcloud = WordCloud(background_color="white", max_words=100,mask=coloring,
+                              max_font_size=100, random_state=30, scale=2,
+                    font_path="./data/simkai.ttf").generate(name)
+
+    i#mage_colors = ImageColorGenerator(coloring)
+   # plt.imshow(my_wordcloud.recolor(color_func=image_colors))
+    #plt.imshow(my_wordcloud)
+    #plt.axis("off")
+    #plt.show()
+
+    # 保存图片
+    my_wordcloud.to_file('hotspot.png')
+    return HttpResponse(name)
