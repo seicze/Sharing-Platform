@@ -44,9 +44,6 @@ urlpatterns = [
     path(r'expert/',views.expert),
     path(r'topup/',views.topup),
     path(r'hotspot',resource.hotspot),
-<<<<<<< HEAD
     path(r'geneWordCloud',resource.geneWordCloud),
-=======
     path(r'register',views.register),
->>>>>>> a19502cdb64d7f5548411b800fc0f52aec6b0ca6
 ]

@@ -2,11 +2,7 @@ from django.shortcuts import render,HttpResponseRedirect
 from django.http import HttpResponse
 from app01.models import Essay,Patent,Expert,HotSpot
 from django.contrib import messages
-from wordcloud import WordCloud, ImageColorGenerator
-from PIL import Image
-import matplotlib.pyplot as plt
-import numpy as np
-import pyecharts
+
 # Create your views here.
 
 
@@ -90,6 +86,10 @@ def hotspot(request):
     return HttpResponse("game over!")
 
 def geneWordCloud(request):
+    from wordcloud import WordCloud, ImageColorGenerator
+    from PIL import Image
+    import matplotlib.pyplot as plt
+    import numpy as np
     name = []
     value = []
     res = HotSpot.objects.order_by('-num')
