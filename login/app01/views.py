@@ -211,3 +211,6 @@ def expert(request):
 
 def topup(request):
     return render(request,"app01/TopUp.html")
+
+def register(request):
+    return  render(request,"app01/register.html");
