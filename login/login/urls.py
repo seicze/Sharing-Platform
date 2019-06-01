@@ -19,7 +19,7 @@ from app01 import views,resource
 from django.conf.urls import url,include
 
 urlpatterns = [
-    path('', views.expert),
+    path('', views.register),
     path('admin/', admin.site.urls),
     path('index/', views.index),
     path('registerView/', views.registerView),
@@ -44,4 +44,5 @@ urlpatterns = [
     path(r'expert/',views.expert),
     path(r'topup/',views.topup),
     path(r'hotspot',resource.hotspot),
+    path(r'register',views.register),
 ]
