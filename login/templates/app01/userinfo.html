@@ -6,7 +6,7 @@ b<!DOCTYPE html>
 </head>
 <body>
 {% if not user %}
-    <a href="/registerView/">注册/登录</a>
+    <a href="/loginView/">注册/登录</a>
 {% else %}
     {% ifnotequal data.user_id  user_id %}
         <a href="/index/">首页</a>

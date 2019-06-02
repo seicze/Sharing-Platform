@@ -36,11 +36,19 @@ def index(request):
 
 
 # 显示页面
-def registerView(request):
+def loginView(request):
     user_id = request.session.get('user_id', False)
     print(user_id)
     if not user_id:
         return render(request, 'app01/login.html')
+    else:
+        return HttpResponseRedirect('/index/')
+
+def registerView(request):
+    user_id = request.session.get('user_id', False)
+    print(user_id)
+    if not user_id:
+        return render(request, 'app01/register.html')
     else:
         return HttpResponseRedirect('/index/')
 
@@ -70,14 +78,19 @@ def register(request):
         basic_info = request.POST['basic_info']
         if password1 != password2:
             messages.success(request, "密码不一致！")
-            return render(request, 'app01/login.html')
+            return render(request, 'app01/register.html')
         if Account.objects.filter(user_name=user_name):
             messages.success(request, "用户名重复！")
-            return render(request, 'app01/login.html')
+            return render(request, 'app01/register.html')
         account = Account(user_name=user_name,password=password1,email=email,tel=tel,basic_info=basic_info)
         account.save()
         check = True
-        return render(request, 'app01/immediate.html',{'check':check})
+        result = Account.objects.filter(user_name=user_name, password=password1)  # filter
+        result = result[0]
+        request.session['user_id'] = result.user_id  # 修改了
+        request.session['user_name'] = result.user_name
+        messages.success(request, "注册成功")
+        return HttpResponseRedirect('/index/')
         # else:
         #     error_msg = user_input_obj.errors
         #     messages.success(request, error_msg)
@@ -106,7 +119,7 @@ def login(request):
 
     if not result.exists():
         messages.success(request, "用户名或密码不正确！")
-        return HttpResponseRedirect('/registerView/')
+        return HttpResponseRedirect('/loginView/')
     else:
         result = result[0]
         request.session['user_id'] = result.user_id #修改了
@@ -211,6 +224,3 @@ def expert(request):
 
 def topup(request):
     return render(request,"app01/TopUp.html")
-
-def register(request):
-    return  render(request,"app01/register.html");

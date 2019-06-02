@@ -22,8 +22,9 @@ urlpatterns = [
     path('', views.register),
     path('admin/', admin.site.urls),
     path('index/', views.index),
-    path('registerView/', views.registerView),
+    path('loginView/', views.loginView),
     path('register/', views.register),
+    path(r'registerView/',views.registerView),
     path('login/', views.login),
     path('accounts/login/', views.logout),
     path(r'userinfoView/<int:user_id>/', views.userinfoView),
@@ -45,5 +46,5 @@ urlpatterns = [
     path(r'topup/',views.topup),
     path(r'hotspot',resource.hotspot),
     path(r'geneWordCloud',resource.geneWordCloud),
-    path(r'register',views.register),
+
 ]
