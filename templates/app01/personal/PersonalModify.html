@@ -15,11 +15,10 @@
 	
 </head>
 <body>
-	<div class="header">
         <nav class="navbar navbar-default" role="navigation">
             <div class="container-fluid" >
                 <div class="nav navbar-default  navbar-header">
-                    <a class="navbar-brand" href="#">xfjz</a>
+                    <a class="navbar-brand" href="#">iScholar</a>
                 </div>
                 <div>
                     <ul class="nav navbar-nav nav-pills navbar-left">
@@ -35,7 +34,7 @@
                                     {% else %}
                                         <li><a>您已经登录</a></li>
                                         <li><a href="/accounts/login/">注销</a></li>
-                                        <li><a href="/userinfoView/{{user_id}}">个人信息</a></li>
+                                        <li><a href="/PS/">个人信息</a></li>
                                         <li><a href="/message/">消息中心</a></li>
                                     {% endif %}
                             </ul>
@@ -43,12 +42,11 @@
                 </div>
             </div>
         </nav>
-    </div>
     <div class="mainbody">
         <div class="sidebar">
         	<div class="sidehead">
             	<img src="/static/images/headicon.png" style="border-radius:50%; border:2px solid #C9DEFE; width:100px; height:100px; margin:40px;">
-                <p align="center" style="margin-top:-20px;">name</p>
+                <p align="center" style="margin-top:-20px;">{{ user_name }}</p>
             </div>
 			<div id="person-list">
                 <ul class="nav nav-pills nav-stacked">

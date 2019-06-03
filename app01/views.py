@@ -2,7 +2,7 @@ from django.shortcuts import render,HttpResponseRedirect,HttpResponse
 from django.contrib import auth
 # from app01.myform import User as FUser
 # from app01.models import User
-from app01.models import Account,TMessage,Message,Expert,Collect,Feedback,Identify
+from app01.models import Account,TMessage,Message,Expert,Collect,Feedback,Identify,Hotspot
 from django.contrib import messages
 from django import forms
 from django.core.mail import send_mail, send_mass_mail
@@ -29,17 +29,34 @@ class UserInfo(forms.Form):
 
 
 def index(request):
-    user_id = request.session.get('user_id',False)
-
-    return render(request,'app01/index.html',{'user_id':user_id})
+    dic = {}
+    user_id = request.session.get('user_id', False)
+    dic['user_id'] = user_id
+    res = Hotspot.objects.order_by('-num')
+    dic['hotspot1'] = res[0].keyword
+    dic['hotspot2'] = res[1].keyword
+    dic['hotspot3'] = res[2].keyword
+    dic['hotspot4'] = res[3].keyword
+    return render(request, 'app01/index.html', dic)
 
 
 # 显示页面
-def registerView(request):
+
+
+def loginView(request):
     user_id = request.session.get('user_id', False)
     print(user_id)
     if not user_id:
         return render(request, 'app01/login.html')
+    else:
+        return HttpResponseRedirect('/index/')
+
+
+def registerView(request):
+    user_id = request.session.get('user_id', False)
+    print(user_id)
+    if not user_id:
+        return render(request, 'app01/register.html')
     else:
         return HttpResponseRedirect('/index/')
 
@@ -56,7 +73,6 @@ def userinfoView(request,user_id):
 
 # 注册
 def register(request):
-
     obj = UserInfo()
     if request.method == 'POST':
         # user_input_obj = UserInfo(request.POST)
@@ -69,19 +85,24 @@ def register(request):
         basic_info = request.POST['basic_info']
         if password1 != password2:
             messages.success(request, "密码不一致！")
-            return render(request, 'app01/login.html')
+            return render(request, 'app01/register.html')
         if Account.objects.filter(user_name=user_name):
             messages.success(request, "用户名重复！")
-            return render(request, 'app01/login.html')
-        account = Account(user_name=user_name,password=password1,email=email,tel=tel,basic_info=basic_info)
+            return render(request, 'app01/register.html')
+        account = Account(user_name=user_name, password=password1, email=email, tel=tel, basic_info=basic_info)
         account.save()
         check = True
-        return render(request, 'app01/immediate.html',{'check':check})
+        result = Account.objects.filter(user_name=user_name, password=password1)  # filter
+        result = result[0]
+        request.session['user_id'] = result.user_id  # 修改了
+        request.session['user_name'] = result.user_name
+        messages.success(request, "注册成功")
+        return HttpResponseRedirect('/index/')
         # else:
         #     error_msg = user_input_obj.errors
         #     messages.success(request, error_msg)
         #     return render(request,'app01/login.html',{'obj':user_input_obj,'errors':error_msg})
-    return render(request,'app01/login.html',{'obj':obj})
+    return render(request, 'app01/login.html', {'obj': obj})
     # check = False
     # if request.method == 'POST':
     #     form = app01(request.POST)
@@ -305,7 +326,7 @@ def success(request):
     introduction = request.POST['introduction']
     identify_data = Identify(identify_user=user_id,name=name,institute=institute,position=position,direction=direction,email=email,introduction=introduction,time=datetime.datetime.now())
     identify_data.save()
-    msg = TMessage(receive_id=user_id,request_id=identify_data.id,content="申请审核中，请耐心等待。",request_date=identify_data.time,send_date=datetime.datetime.now(),type="info")
+    msg = TMessage(receive_id=user_id,request_id=identify_data.id,content="申请审核中，请耐心等待。",request_date=identify_data.time,send_date=datetime.datetime.now(),type="info",state=1)
     msg.save()
     return render(request,"app01/identify/success.html")
 

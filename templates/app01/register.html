@@ -44,7 +44,7 @@
                         <label for="username" style="float: left;padding-left: 8px">用户名</label>
                         <input type="text" id="username" name="user_name" placeholder="请输入用户名" required>
                         <label for="email" style="float: left;padding-left: 8px">邮箱</label>
-                        <input type="text" id="email" name="email" placeholder="请输入邮箱">
+                        <input type="email" id="email" name="email" placeholder="请输入邮箱">
                         <label for="password1" style="float: left;padding-left: 8px">密码</label>
                         <input type="password" id="password1" name="password1" placeholder="密码的格式为6-14位数字和字母组成的字符串" required>
                         <label for="password2" style="float: left;padding-left: 8px">    确认密码</label>
@@ -55,12 +55,12 @@
                         <input type="text"  name="basic_info" placeholder="请输入基本信息">
 
                         <button type="submit">注册</button>
-                        <p style="padding-top: 10px"><a  href="/login.html/" style="float: right">已有账号？</a></p>
+                        <p style="padding-top: 10px"><a  href="/loginView/" style="float: right">已有账号？</a></p>
                     </form>
                 </div>
             </div>
         </div>
-
+        <div style="height:50px;"></div>
         <!-- Javascript -->
         {% if messages %}
             <script>

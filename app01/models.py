@@ -202,3 +202,12 @@ class Comment(models.Model):
     class Meta:
         managed = False
         db_table = 'comment'
+
+
+class Hotspot(models.Model):
+    num = models.IntegerField(blank=True, null=True)
+    keyword = models.CharField(primary_key=True, max_length=255)
+
+    class Meta:
+        managed = False
+        db_table = 'hotspot'
