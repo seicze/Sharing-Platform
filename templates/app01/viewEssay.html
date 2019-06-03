@@ -130,26 +130,23 @@
             </div>
             <div style="width:100%;height:2px;background-color:silver;margin-bottom:2em;margin-top:2em;"></div>
             <div class="comment-container">
-                <div style="width:100%;height:8em;">
-                    <form action="/comment/" method="POST">
+                <div style="width:100%;height:4em;margin-bottom:3em;">
+                    <form action="/comment/essay/{{ paper.paper_id }}/" method="POST">
                         {% csrf_token %}
                         <textarea type="text" name="content"  placeholder="评论内容" style="width:80%;float:left;"class="form-control" rows="2" required></textarea>
                         <input type="submit" onClick="" value="发送消息" class="btn-primary btn-lg" style="float:right;">
                     </form>
                     <div class="clear"></div>
                 </div>
-                    <div class="msg-item">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h3 class="panel-title">
-                                    发信人：{{ msg.send_name }} &nbsp;&nbsp;&nbsp;&nbsp;<a href="/sendmessage/" style="font-size:0.8em;color:blue;">reply</a><div class="msg-item-time">{{ msg.send_date }}</div>
-                                </h3>
-                            </div>
-                            <div class="panel-body">
-                                {{ msg.content }}
-                            </div>
-                        </div>
-                    </div>
+                {% for comment in comment_list %}
+                <div style="padding: 1.5em 0;font-size:1.2em;border-top-style:solid;border-width:1px;border-color:silver;">
+                    <div style="font-size:0.9em;color:grey;">{{ comment.comment_name }}</div>
+                    <div style="">{{ comment.content }}</div>
+                    <div style="font-size:0.8em;color:silver;">{{ comment.comment_date }}</div>
+                </div>
+                {% empty %}
+                <p>暂无评论</p>
+                {% endfor %}
             </div>
         </div>
     </div>

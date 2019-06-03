@@ -3,8 +3,9 @@ from django.contrib import auth
 from django.http import HttpResponse
 # from app01.myform import User as FUser
 # from app01.models import User
-from app01.models import Essay,Patent,Expert,Collect
+from app01.models import Essay,Patent,Expert,Collect,Comment,Account
 from django.contrib import messages
+import datetime
 from django import forms
 from django.core.exceptions import ValidationError
 from django.contrib.auth.decorators import login_required
@@ -39,7 +40,8 @@ def essayView(request,paper_id):
         paper = result
         user_id = request.session.get('user_id', False)
         is_collect = Collect.objects.filter(user_id=user_id,collection_id=paper_id,type="essay").exists()
-        return render(request, 'app01/viewEssay.html', {'paper': paper, 'user_id': user_id, 'is_collect': is_collect})
+        comment_list = Comment.objects.filter(resource_id=paper_id,type="essay").order_by("-comment_date")
+        return render(request, 'app01/viewEssay.html', {'paper': paper, 'user_id': user_id, 'is_collect': is_collect, 'comment_list': comment_list})
 
 
 def expertView(request):
@@ -89,43 +91,49 @@ def patentView(request,patent_id):
         apatent = result
         user_id = request.session.get('user_id', False)
         is_collect = Collect.objects.filter(user_id=user_id, collection_id=patent_id, type="patent").exists()
-        return render(request, 'app01/viewPatent.html', {'apatent': apatent, 'user_id': user_id, 'is_collect': is_collect})
+        comment_list = Comment.objects.filter(resource_id=patent_id, type="patent").order_by("-comment_date")
+        return render(request, 'app01/viewPatent.html', {'apatent': apatent, 'user_id': user_id, 'is_collect': is_collect, 'comment_list': comment_list})
 
 
-def collectessay(request,paper_id):
+def collect(request,type,id):
     user_id = request.session.get('user_id', False)
     print(user_id)
     if not user_id:
         return HttpResponseRedirect('/registerView/')
-    result = Collect.objects.filter(user_id=user_id,collection_id=paper_id,type="essay")
+    result = Collect.objects.filter(user_id=user_id,collection_id=id,type=type)
     if not result.exists():
-        info = Collect(user_id=user_id,collection_id=paper_id,collection_name=Essay.objects.filter(paper_id=paper_id)[0].paper_name,type="essay")
+        if type == "essay":
+            collection_name = Essay.objects.get(paper_id=id).paper_name
+        elif type == "patent":
+            collection_name = Patent.objects.get(patent_id=id).patent_name
+        else:
+            collection_name = ""
+        info = Collect(user_id=user_id,collection_id=id,collection_name=collection_name,type=type)
         info.save()
         messages.success(request, "已收藏！")
     else:
         result[0].delete()
         messages.success(request, "已取消收藏！")
-    return HttpResponseRedirect(reverse('essay', kwargs={'paper_id': paper_id}))
-
-
-def collectpatent(request,patent_id):
-    user_id = request.session.get('user_id', False)
-    if not user_id:
-        return HttpResponseRedirect('/registerView/')
-    result = Collect.objects.filter(user_id=user_id,collection_id=patent_id,type="patent")
-    if not result.exists():
-        info = Collect(user_id=user_id,collection_id=patent_id,collection_name=Patent.objects.filter(patent_id=patent_id)[0].patent_name,type="patent")
-        info.save()
-        messages.success(request, "已收藏！")
+    if type == "essay":
+        return HttpResponseRedirect(reverse(type, kwargs={'paper_id': id}))
+    elif type == "patent":
+        return HttpResponseRedirect(reverse(type, kwargs={'patent_id': id}))
     else:
-        result[0].delete()
-        messages.success(request, "已取消收藏！")
-    return HttpResponseRedirect(reverse('patent', kwargs={'patent_id': patent_id}))
+        return HttpResponseRedirect("index")
 
 
-def comment(request):
+def comment(request,type,id):
     user_id = request.session.get('user_id', False)
     if not user_id:
         return HttpResponseRedirect('/registerView/')
+    user_name = Account.objects.get(user_id=user_id).user_name
     content = request.POST['content']
-
+    acomment = Comment(type=type,comment_name=user_name,resource_id=id,comment_date=datetime.datetime.now(),content=content)
+    acomment.save()
+    messages.success(request, "评论成功！")
+    if type == "essay":
+        return HttpResponseRedirect(reverse(type, kwargs={'paper_id': id}))
+    elif type == "patent":
+        return HttpResponseRedirect(reverse(type, kwargs={'patent_id': id}))
+    else:
+        return HttpResponseRedirect("/index/")

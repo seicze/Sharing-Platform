@@ -43,13 +43,12 @@ urlpatterns = [
     path('personalchanged/',views.personalchange),
     path('recharge/',views.recharge),
     path(r'topup/',views.topup),
-    path(r'collect/essay/<int:paper_id>/', resource.collectessay),
-    path(r'collect/patent/<int:patent_id>/', resource.collectpatent),
+    path(r'collect/<str:type>/<int:id>/', resource.collect),
     path(r'identify/',views.identify),
     path(r'confirmM/',views.confirmM),
     path(r'confirmI/',views.confirmI),
     path(r'confirminfo/<path:str>/', views.confirminfo),
     path(r'success/', views.success),
-    path(r'send_my_email/',views.send_my_email)
-    
+    path(r'send_my_email/',views.send_my_email),
+    path(r'comment/<str:type>/<int:id>/', resource.comment),
 ]

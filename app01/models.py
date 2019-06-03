@@ -189,3 +189,16 @@ class Identify(models.Model):
     class Meta:
         managed = False
         db_table = 'identify'
+
+
+class Comment(models.Model):
+    id = models.BigAutoField(primary_key=True)
+    type = models.CharField(max_length=11)
+    comment_name = models.CharField(max_length=22)
+    resource_id = models.IntegerField()
+    comment_date = models.DateTimeField()
+    content = models.CharField(max_length=1015)
+
+    class Meta:
+        managed = False
+        db_table = 'comment'
