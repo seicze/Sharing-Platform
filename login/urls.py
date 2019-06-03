@@ -51,4 +51,5 @@ urlpatterns = [
     path(r'confirminfo/<path:str>/', views.confirminfo),
     path(r'success/', views.success),
     path(r'send_my_email/',views.send_my_email)
+    
 ]

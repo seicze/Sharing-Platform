@@ -34,18 +34,6 @@
                 <ul class="nav navbar-nav nav-pills navbar-left">
 
                             <li ><a href="/index/">主页</a></li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">
-                                    成果分类
-                                    <b class="caret"></b>
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="#">工科</a></li>
-                                    <li><a href="#">理科</a></li>
-                                    <li><a href="#">农科</a></li>
-                                </ul>
-                            </li>
-                        <li><a href="#">专利大厅</a></li>
                 </ul>
             </div>
             <div>
@@ -143,8 +131,9 @@
             <div style="width:100%;height:2px;background-color:silver;margin-bottom:2em;margin-top:2em;"></div>
             <div class="comment-container">
                 <div style="width:100%;height:8em;">
-                    <form>
-                        <textarea type="text" name="content"  placeholder="信息内容" style="width:80%;float:left;"class="form-control" rows="3"></textarea>
+                    <form action="/comment/" method="POST">
+                        {% csrf_token %}
+                        <textarea type="text" name="content"  placeholder="评论内容" style="width:80%;float:left;"class="form-control" rows="2" required></textarea>
                         <input type="submit" onClick="" value="发送消息" class="btn-primary btn-lg" style="float:right;">
                     </form>
                     <div class="clear"></div>

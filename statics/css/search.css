@@ -10,8 +10,8 @@
 	}
 	.search-form {
 		position: relative;
-		float: right;
-		width: 865px;
+		margin: 0 auto;
+		width:765px;
 	}
 	.input-box {
 		width: 765px;
@@ -65,7 +65,7 @@
 	}
 	.search-input {
 		float: left;
-		width: 555px;
+		width: 673px;
 		height: 40px;
 		padding: 5px 5px 5px 5px;
         margin: 5px 5px 5px 5px;
@@ -84,8 +84,9 @@
 		outline: none;
 		background-repeat: no-repeat;
 		background-position: center;
-		background-color: #fff;
 		cursor: pointer;
+		color: #fff;
+        background-color: #337ab7;
 	}
 	.readvce {
 		position: absolute;

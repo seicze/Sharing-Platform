@@ -96,7 +96,7 @@ def collectessay(request,paper_id):
     user_id = request.session.get('user_id', False)
     print(user_id)
     if not user_id:
-        return render(request, 'app01/login.html')
+        return HttpResponseRedirect('/registerView/')
     result = Collect.objects.filter(user_id=user_id,collection_id=paper_id,type="essay")
     if not result.exists():
         info = Collect(user_id=user_id,collection_id=paper_id,collection_name=Essay.objects.filter(paper_id=paper_id)[0].paper_name,type="essay")
@@ -110,9 +110,8 @@ def collectessay(request,paper_id):
 
 def collectpatent(request,patent_id):
     user_id = request.session.get('user_id', False)
-    print(user_id)
     if not user_id:
-        return render(request, 'app01/login.html')
+        return HttpResponseRedirect('/registerView/')
     result = Collect.objects.filter(user_id=user_id,collection_id=patent_id,type="patent")
     if not result.exists():
         info = Collect(user_id=user_id,collection_id=patent_id,collection_name=Patent.objects.filter(patent_id=patent_id)[0].patent_name,type="patent")
@@ -122,3 +121,11 @@ def collectpatent(request,patent_id):
         result[0].delete()
         messages.success(request, "已取消收藏！")
     return HttpResponseRedirect(reverse('patent', kwargs={'patent_id': patent_id}))
+
+
+def comment(request):
+    user_id = request.session.get('user_id', False)
+    if not user_id:
+        return HttpResponseRedirect('/registerView/')
+    content = request.POST['content']
+

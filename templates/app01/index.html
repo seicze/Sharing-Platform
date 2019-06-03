@@ -25,17 +25,6 @@
                 <ul class="nav navbar-nav nav-pills navbar-left">
 
                             <li class="active"><a href="/index/">主页</a></li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">
-                                    成果分类
-                                    <b class="caret"></b>
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="#">工科</a></li>
-                                    <li><a href="#">理科</a></li>
-                                    <li><a href="#">农科</a></li>
-                                </ul>
-                            </li>
                 </ul>
             </div>
             <div>
@@ -55,40 +44,16 @@
         </div>
     </nav>
     <div>
+        <div style="width:1000px;height:230px;margin: 0 auto;text-align:center;">
+            <img src="/static/images/logo.png" style="">
+        </div>
         <form class="searchmain" method='get' action="/search/" target="_blank">
-            <ul class="search-tab" role="tablist">
-                 <li class="nav-item">
-                    <a class="nav-link active" data-toggle="tab" href="#menu3">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" data-toggle="tab" href="#menu1">Menu 1</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" data-toggle="tab" href="#menu2">Menu 2</a>
-                </li>
-            </ul>
+
+
             <div class="search-form" class="input-box">
                 <div class="input-box tab-content">
-                    <div class="sort">
-                        <div class="sort-default" >
-                              <select class ="selectpicker"  data-style="btn-primary" data-width ="100">
-                                <option value="1">主题</option>
-                                <option value="2">作者</option>
-                                <option value="3">关键词</option>
-                                <option value="4">摘要</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div id="menu1" class="fade tab-pane" role="tabpanel">
-                        <input class="search-input" type="text" name="q" placeholder="只展示文字修改2" value="" autocomplete="off">
-                        <input class="btn search-btn" type="submit" value="查询">
-                    </div>
-                    <div id="menu2" class="fade tab-pane" role="tabpanel">
-                        <input class="search-input" type="text" name="q" placeholder="只展示文字修改3" value="" autocomplete="off">
-                        <input class="btn search-btn" type="submit" value="查询">
-                    </div>
                     <div id="menu3" class="tab-pane active " role="tabpanel">
-                        <input class="search-input" type="text" name="q" placeholder="文献名" value="" autocomplete="off">
+                        <input class="search-input" type="text" name="q" placeholder="查询内容" value="" autocomplete="off">
                         <input class="btn search-btn" type="submit" value="查询">
                     </div>
                 </div>
