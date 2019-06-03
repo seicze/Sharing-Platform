@@ -17,8 +17,9 @@
 	<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <!--webfonts-->
     <!--//webfonts-->
-    <title>消息中心</title>
+    <title>问题反馈</title>
 </head>
+
 <body>
     <nav class="navbar navbar-default" role="navigation">
         <div class="container-fluid" >
@@ -60,15 +61,9 @@
         </div>
     </nav>
     <div class="msg-container">
-        <form action="/send/" method="POST">
+        <form action="/sendfeedback/" method="POST">
             <ul class="">
-                <h3>发送消息</h3>
-                <li>
-                    <input type="text" name="user_name"   placeholder="用户名" value="{{ receiver_name }}" required/>
-
-                    <div class="clear"> </div>
-                </li>
-                <br/>
+                <h3>问题反馈</h3>
                 {% csrf_token %}
                 <li>
                     <textarea type="text" name="content"  placeholder="信息内容" class="form-control" rows="5"></textarea>

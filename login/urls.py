@@ -33,6 +33,8 @@ urlpatterns = [
     path(r'message/', views.message),
     path(r'sendmessage/', views.sendmessage),
     path(r'send/', views.send),
+    path(r'feedback/', views.feedback),
+    path(r'sendfeedback/', views.sendfeedback),
     path(r'essay/<int:paper_id>/', resource.essayView, name='essay'),
     path(r'patent/<int:patent_id>/', resource.patentView, name='patent'),
     path('PS/',views.customerps),
@@ -40,8 +42,13 @@ urlpatterns = [
     path('personalmodify/',views.personalmodify),
     path('personalchanged/',views.personalchange),
     path('recharge/',views.recharge),
-    path(r'identify/',views.identify),
     path(r'topup/',views.topup),
     path(r'collect/essay/<int:paper_id>/', resource.collectessay),
     path(r'collect/patent/<int:patent_id>/', resource.collectpatent),
+    path(r'identify/',views.identify),
+    path(r'confirmM/',views.confirmM),
+    path(r'confirmI/',views.confirmI),
+    path(r'confirminfo/<path:str>/', views.confirminfo),
+    path(r'success/', views.success),
+    path(r'send_my_email/',views.send_my_email)
 ]

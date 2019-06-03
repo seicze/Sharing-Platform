@@ -80,11 +80,22 @@ class Expert(models.Model):
     position = models.CharField(max_length=255, blank=True, null=True)
     direction = models.CharField(max_length=255, blank=True, null=True)
     introduction = models.CharField(max_length=255, blank=True, null=True)
-    contact = models.CharField(max_length=255, blank=True, null=True)
+    email = models.CharField(max_length=255, blank=True, null=True)
 
     class Meta:
         managed = False
         db_table = 'expert'
+
+
+class Feedback(models.Model):
+    id = models.BigAutoField(primary_key=True)
+    send = models.IntegerField(db_column='send_id')
+    content = models.CharField(db_column='content',max_length=1015, blank=True, null=True)
+    send_date = models.DateTimeField(db_column='send_date')
+
+    class Meta:
+        managed = False
+        db_table = 'feedback'
 
 
 class Message(models.Model):
@@ -162,3 +173,19 @@ class Collect(models.Model):
     class Meta:
         managed = False
         db_table = 'collect'
+
+
+class Identify(models.Model):
+    id = models.BigAutoField(primary_key=True)
+    identify_user = models.IntegerField()
+    email = models.CharField(max_length=255)
+    name = models.CharField(max_length=255)
+    institute = models.CharField(max_length=255)
+    position = models.CharField(max_length=255)
+    direction = models.CharField(max_length=255)
+    introduction = models.CharField(max_length=255)
+    time = models.DateTimeField()
+
+    class Meta:
+        managed = False
+        db_table = 'identify'

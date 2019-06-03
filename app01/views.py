@@ -1,10 +1,15 @@
-from django.shortcuts import render,HttpResponseRedirect
+from django.shortcuts import render,HttpResponseRedirect,HttpResponse
 from django.contrib import auth
 # from app01.myform import User as FUser
 # from app01.models import User
-from app01.models import Account,TMessage,Message,Expert,Collect
+from app01.models import Account,TMessage,Message,Expert,Collect,Feedback,Identify
 from django.contrib import messages
 from django import forms
+from django.core.mail import send_mail, send_mass_mail
+import datetime
+import uuid
+import hashlib
+from login import settings
 from django.core.exceptions import ValidationError
 from django.contrib.auth.decorators import login_required
 # Create your views here.
@@ -124,7 +129,7 @@ def message(request):
     user_id = request.session.get('user_id', False)
     print(user_id)
     if not user_id:
-        return render(request, 'app01/login.html')
+        return HttpResponseRedirect('/registerView/')
     result = TMessage.objects.filter(receive_id=user_id).order_by('-send_date')
     result2 = Message.objects.filter(receive=user_id).order_by('-send_date')
     unread1 = 0
@@ -155,7 +160,7 @@ def send(request):
     content = request.POST['content']
     user_id = request.session.get('user_id', False)
     if not user_id:
-        return render(request, 'app01/login.html')
+        return HttpResponseRedirect('/registerView/')
     receiver = Account.objects.filter(user_name=user)
     if not receiver.exists():
         messages.success(request, "收信人不合法！")
@@ -165,6 +170,25 @@ def send(request):
     msg.save()
     messages.success(request, "发送成功！")
     return HttpResponseRedirect('/sendmessage/')
+
+
+def feedback(request):
+    user_id = request.session.get('user_id', False)
+    if not user_id:
+        return HttpResponseRedirect('/registerView/')
+    return render(request,'app01/feedback.html',{'user_id': user_id})
+
+
+def sendfeedback(request):
+    content = request.POST['content']
+    user_id = request.session.get('user_id', False)
+    if not user_id:
+        return HttpResponseRedirect('/registerView/')
+    # user = Account.objects.get(user_id=user_id)
+    msg = Feedback(send=user_id, content=content, send_date=datetime.datetime.now())
+    msg.save()
+    messages.success(request, "发送成功！")
+    return HttpResponseRedirect('/feedback/')
 
 
 def customerps(request):
@@ -183,6 +207,7 @@ def customerps(request):
         dic['money'] = result.money
         dic['user_id'] = user_id
         dic['collect'] = Collect.objects.filter(user_id=user_id)
+        dic['type'] = result.type
         return render(request,"app01/personal/CustomerPS.html",dic)
 
 
@@ -221,11 +246,11 @@ def personalchange(request):
         messages.success(request, "个人信息修改成功")
         return HttpResponseRedirect("/PS/")
 
+
 def recharge(request):
     return render(request,"app01/recharge.html")
 
-def identify(request):
-    return render(request,"app01/identify.html")
+
 def expert(request,expert_id):
     user_id = request.session.get('user_id', False)
     result = Expert.objects.filter(expert_id=expert_id)
@@ -233,5 +258,82 @@ def expert(request,expert_id):
         return HttpResponseRedirect('/index/')
     return render(request,"app01/personal/Expert.html",{'data': result[0], 'user_id': user_id})
 
+
 def topup(request):
     return render(request,"app01/TopUp.html")
+
+#
+
+
+def identify(request):
+    user_id = request.session.get('user_id', False)
+    if not user_id:
+        return HttpResponseRedirect('/registerView/')
+    return render(request,"app01/identify/identify.html",{'user_id': user_id})
+
+
+def confirmM(request):
+    user_id = request.session.get('user_id', False)
+    if not user_id:
+        return HttpResponseRedirect('/registerView/')
+    return render(request,"app01/identify/confirmM.html",{'user_id': user_id})
+
+
+def confirmI(request):
+    return render(request,"app01/identify/confirmI.html")
+
+
+def confirminfo(request,str):
+    user_id = request.session.get('user_id', False)
+    if not user_id:
+        return HttpResponseRedirect('/registerView/')
+    if str == request.session.get('random_str', False):
+        return render(request, "app01/identify/confirminfo.html",{'user_id': user_id})
+    else:
+        return HttpResponseRedirect('/index/')
+
+
+def success(request):
+    user_id = request.session.get('user_id', False)
+    if not user_id:
+        return HttpResponseRedirect('/registerView/')
+    name = request.POST['name']
+    institute = request.POST['institute']
+    position = request.POST['position']
+    direction = request.POST['direction']
+    email = request.POST['email']
+    introduction = request.POST['introduction']
+    identify_data = Identify(identify_user=user_id,name=name,institute=institute,position=position,direction=direction,email=email,introduction=introduction,time=datetime.datetime.now())
+    identify_data.save()
+    msg = TMessage(receive_id=user_id,request_id=identify_data.id,content="申请审核中，请耐心等待。",request_date=identify_data.time,send_date=datetime.datetime.now(),type="info")
+    msg.save()
+    return render(request,"app01/identify/success.html")
+
+
+def send_my_email(request):
+    title = "ischolar专家认证"
+    random_str = str(get_random_str())
+    request.session['random_str'] = random_str
+    request.session['email'] = request.POST['email']
+    msg = "感谢您申请认证，请通过申请时的ip前往： http://127.0.0.1:8000/confirminfo/"
+    msg2 = msg+random_str
+
+    email_from = settings.DEFAULT_FROM_EMAIL
+    reciever = [
+        request.POST['email']
+        # 'y1jiaoao@163.com'
+    ]
+    # 发送邮件
+    try:
+        send_mail(title, msg2, email_from, reciever)
+    except:
+        return HttpResponse("发送邮件异常，请重新操作。")
+    return HttpResponse("请点击邮件中链接来进入下一步认证（请不要登出账号）。")
+
+
+def get_random_str():
+    uuid_val = uuid.uuid4()
+    uuid_str = str(uuid_val).encode("utf-8")
+    md5 = hashlib.md5()
+    md5.update(uuid_str)
+    return md5.hexdigest()

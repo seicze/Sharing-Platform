@@ -146,3 +146,16 @@ HAYSTACK_CONNECTIONS = {
 # 添加此项，当数据库改变时，会自动更新索引，非常方便
 HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'
 # HAYSTACK_CUSTOM_HIGHLIGHTER = 'app01.templatetags.my_filter_and_tags.myhighlight'
+
+# 邮件发送
+EMAIL_USE_SSL = True
+
+EMAIL_HOST = 'smtp.qq.com'  # 如果是 163 改成 smtp.163.com
+
+EMAIL_PORT = 465
+
+EMAIL_HOST_USER = "2722321554@qq.com"  # 帐号
+
+EMAIL_HOST_PASSWORD = "ccqgukblbtkgdefj"  # 授权码（****）
+# 默认邮件
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
