@@ -5,6 +5,7 @@
     <link href="/static/css/bootstrap.css" rel='stylesheet' type='text/css' />
     <link href="/static/css/search.css" rel='stylesheet' type='text/css' />
     <link href="/static/css/bootstrap-select.min.css" rel='stylesheet' type='text/css' />
+    <link rel="shortcut icon" href="/static/ico/favicon.png">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="/static/js/jquery-3.4.1.min.js"></script>
     <script src="/static/js/bootstrap.js"></script>
@@ -27,7 +28,7 @@
 
     }
     .search_result-url{
-        font-size:1.7em
+        font-size:1.5em
     }
 </style>
 <body>
@@ -74,28 +75,25 @@
     </div>
     <div class="search_result-container">
         {% load highlight %}{% load more_like_this %}
-        {% if query %}
+        {% if query %}{% more_like_this entry as related_content %}
             {% for result in page.object_list %}
                 <div class="search_result-item">
-                    <p>
-                        <a href="/essay/{{result.object.paper_id}}" target="_blank" class="search_result-url">{{ result.object.paper_name }} </a><br/>
-                        {% highlight result.text with query css_class "keyword" %}
-                        {% more_like_this entry as related_content %}
-                    </p>
-                    <!--
                     {% if result.object.paper_id %}
                     <p>
-                        <a href="/essay/{{result.object.paper_id}}" target="_blank" class="search_result-url">{{ result.object.paper_name }} </a><br/>
+                        <a href="/essay/{{result.object.paper_id}}" target="_blank" class="search_result-url">论文：{{ result.object.paper_name }} </a><br/>
                         {% highlight result.text with query css_class "keyword" %}
-
+                    </p>
+                    {% elif result.object.patent_id %}
+                    <p>
+                        <a href="/patent/{{result.object.patent_id}}" target="_blank" class="search_result-url">专利：{{ result.object.patent_name }} </a><br/>
+                        {% highlight result.text with query css_class "keyword" %}
                     </p>
                     {% else %}
                     <p>
-                        <a href="/patent/{{result.object.patent_id}}" target="_blank" class="search_result-url">{{ result.object.patent_name }} </a><br/>
+                        <a href="/expert/{{result.object.expert_id}}" target="_blank" class="search_result-url">专家：{{ result.object.name }} </a><br/>
                         {% highlight result.text with query css_class "keyword" %}
-
                     </p>
-                    {% endif %}-->
+                    {% endif %}
                 </div>
             {% empty %}
                 <p>啥也没找到</p>
