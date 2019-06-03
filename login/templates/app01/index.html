@@ -56,7 +56,8 @@
     </nav>
     <div>
         <form class="searchmain" method='get' action="/search/" target="_blank">
-            <ul class="search-tab" role="tablist">
+            <img src="/static/images/logo.png" width="420" height="120">
+            <ul class="search-tab" role="tablist" style="padding-top: 120px">
                  <li class="nav-item">
                     <a class="nav-link active" data-toggle="tab" href="#menu3">Home</a>
                 </li>
@@ -93,19 +94,19 @@
                     </div>
                 </div>
 
-                <p class="nav-item">
-                    <p class="label div-inline">热点</p>
+                <div class="nav-item" style="padding-top: 20px; padding-left: 80px">
+                    <img src="/static/images/hotspot.png" style="position: absolute;top: 20px;left: 0;width: 500px;height: 500px;z-index: -100"/>
+                    <p class="label div-inline" style="padding-top: 0px">热点</p>
 
-                        <a class="nav-link"  href="#">{{hotspot1}}</a>
+                        <a class="nav-link "  href="#" >{{hotspot1}}</a>
                         <a class="nav-link"  href="#">{{hotspot2}}</a>
                         <a class="nav-link"  href="#">{{hotspot3}}</a>
                         <a class="nav-link"  href="#">{{hotspot4}}</a>
+                    </p>
 
-                </p>
+                </div>
 
             </div>
-
-            <img src="/static/images/hotspot.png" height=500 width=500 />
         </form>
 
     </div>
