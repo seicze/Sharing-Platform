@@ -37,6 +37,14 @@ def index(request):
     dic['hotspot2'] = res[1].keyword
     dic['hotspot3'] = res[2].keyword
     dic['hotspot4'] = res[3].keyword
+    dic['hotspot5'] = res[4].keyword
+    dic['hotspot6'] = res[5].keyword
+    dic['href1'] = '/search/?q=' + res[0].keyword
+    dic['href2'] = '/search/?q=' + res[1].keyword
+    dic['href3'] = '/search/?q=' + res[2].keyword
+    dic['href4'] = '/search/?q=' + res[3].keyword
+    dic['href5'] = '/search/?q=' + res[4].keyword
+    dic['href6'] = '/search/?q=' + res[5].keyword
     return render(request, 'app01/index.html', dic)
 
 

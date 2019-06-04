@@ -8,6 +8,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="/static/js/jquery-3.4.1.min.js"></script>
     <script src="/static/js/bootstrap.js"></script>
+    <link href="/static/css/viewachieve.css" rel='stylesheet' type='text/css' />
     <script src="https://cdn.bootcss.com/bootstrap-hover-dropdown/2.2.1/bootstrap-hover-dropdown.min.js"></script>
     <script src="/static/js/bootstrap-select.min.js"></script>
     <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
@@ -45,7 +46,7 @@
     </nav>
     <div>
         <div style="width:1000px;height:230px;margin: 0 auto;text-align:center;">
-            <img src="/static/images/logo.png" style="">
+            <img src="/static/images/logo.png" style="position:absolute;top:22%;left:28%;margin-left:0px;"width="500" height="160" >
         </div>
         <form class="searchmain" method='get' action="/search/" target="_blank">
 
@@ -58,17 +59,21 @@
                     </div>
                 </div>
             </div>
-            <p class="nav-item" style="margin-left:125px;margin-top:1em;">
-                <a class="nav-link" >{{hotspot1}}</a>
-                <a class="nav-link">{{hotspot2}}</a>
-                <a class="nav-link">{{hotspot3}}</a>
-                <a class="nav-link">{{hotspot4}}</a>
+
+            <div class="nav-item" style="padding-top: 0px; padding-left: 20px">
+                <img src="/static/images/hotspot.png" style="position: absolute;top: 20px;left: 250px;width: 500px;height: 500px;z-index: -100"/>
+                <p class="label div-inline" style="padding-top: 1px;padding-left: 110px;">近期热点</p>
+            <p class="nav-item" style="margin-left:50px;margin-top:1em;">
+                <a class="nav-link" href={{href1}}>{{hotspot1}}</a>
+                <a class="nav-link" href={{href2}}>{{hotspot2}}</a>
+                <a class="nav-link" href={{href3}}>{{hotspot3}}</a>
+                <a class="nav-link" href={{href4}}>{{hotspot4}}</a>
+                <a class="nav-link" href={{href5}}>{{hotspot5}}</a>
+                <a class="nav-link" href={{href6}}>{{hotspot6}}</a>
             </p>
+            </div>
         </form>
 
-        <div style="width:1000px;height:auto;margin: 0 auto;text-align:center;">
-            <img src="/static/images/hotspot.png" height=500 width=500 />
-        </div>
     </div>
 </body>
 </html>

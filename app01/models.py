@@ -1,5 +1,5 @@
 from django.db import models
-
+from mongoengine import *
 
 class Project(models.Model):
     project_id = models.AutoField(db_column='Project_id', primary_key=True)  # Field name made lowercase.
@@ -44,7 +44,31 @@ class Account(models.Model):
         managed = False
         db_table = 'account'
 
+class EssayAuthor(Document):
+    name = StringField()
+    org = StringField()
+    id = StringField()
 
+class Essay(Document):
+    _id = IntField(primary_key=True)
+    id = StringField()
+    title = StringField()
+    authors = ListField(ReferenceField(EssayAuthor))
+    year = IntField()
+    keywords = ListField(StringField())
+    n_citation = IntField()
+    page_start = StringField()
+    page_end = StringField()
+    lang = StringField()
+    volume = StringField()
+    issue = StringField()
+    doi = StringField()
+    url = ListField(StringField())
+    abstract = StringField()
+    clicks = DecimalField()
+    downloads = DecimalField()
+    meta = {'collection': 'papers'}
+'''
 class Essay(models.Model):
     paper_id = models.AutoField(db_column='Paper_id', primary_key=True)  # Field name made lowercase.
     paper_name = models.CharField(db_column='Paper_name', max_length=255)  # Field name made lowercase.
@@ -71,8 +95,25 @@ class Essay(models.Model):
     class Meta:
         managed = False
         db_table = 'essay'
-
-
+'''
+class ExpertTag(Document):
+    w = IntField()
+    t = StringField()
+class ExpertPub(Document):
+    i = StringField()
+    r = IntField()
+class Expert(Document):
+    _id = IntField(primary_key=True)
+    id = StringField()
+    name = StringField()
+    h_index = IntField()
+    h_pubs = IntField()
+    tags = ListField(ReferenceField(ExpertTag))
+    n_citation = IntField()
+    pubs = ListField(ReferenceField(ExpertPub))
+    institute = ListField(StringField())
+    meta = {'collections': 'expert'}
+'''
 class Expert(models.Model):
     expert_id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=255)
@@ -86,6 +127,7 @@ class Expert(models.Model):
         managed = False
         db_table = 'expert'
 
+'''
 
 class Feedback(models.Model):
     id = models.BigAutoField(primary_key=True)
