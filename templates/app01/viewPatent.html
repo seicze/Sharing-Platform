@@ -83,7 +83,9 @@
                 </div>
                 <div class="author-wr">
                     <p class="label div-inline">发明人：</p>
-                    <a class="author-text" href="#">{{ apatent.author_name }}</a>
+                    {% for author in author_list %}
+                        <a class="author-text" href={{author.url}}>{{ author.name }}</a>
+                    {% endfor %}
                 </div>
                 <div class="author-wr">
                     <p class="label div-inline">代理机构：</p>

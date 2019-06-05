@@ -2,7 +2,7 @@ from django.shortcuts import render,HttpResponseRedirect,HttpResponse
 from django.contrib import auth
 # from app01.myform import User as FUser
 # from app01.models import User
-from app01.models import Account,TMessage,Message,Expert,Collect,Feedback,Identify,Hotspot,belonging,Essay
+from app01.models import Account,TMessage,Message,Expert,Collect,Feedback,Identify,Hotspot,belonging,Essay,Patent
 from django.contrib import messages
 from django import forms
 from django.core.mail import send_mail, send_mass_mail
@@ -304,7 +304,15 @@ def expert(request,expert_id):
                 paper['url']='/essay/'+str(p.paper_id)+'/'
                 paper['time']=p.published_time
                 paper['author']=p.author_name
-
+                paper['type']='论文'
+            else:
+                p = Patent.objects.filter(patent_id=i[0])
+                p = p[0]
+                paper['title'] = p.patent_name
+                paper['url'] = '/patent/' + str(p.patent_id) + '/'
+                paper['time'] = p.published_time
+                paper['author'] = p.author_name
+                paper['type'] = '专利'
             paper_list.append(paper)
     return render(request,"app01/personal/Expert.html",{'paper_list':paper_list,'data': result[0], 'user_id': user_id})
 

@@ -80,7 +80,7 @@
             <div class="result">
                 {% for paper in paper_list %}
                     <div style="padding-left:30px;text-align:left;background:#F8F8FF" class="res_border">
-                        <h3><a href={{paper.url}}>{{paper.title}}</a></h3>
+                        <h3><a href={{paper.url}}>{{paper.type}}：{{paper.title}}</a></h3>
                         <div class="res_info">
                             <span style="font-size:20px">{{paper.time}}</span>
                             <span style="font-size:20px">{{paper.author}}</span>
