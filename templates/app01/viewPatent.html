@@ -160,7 +160,7 @@
                 </div>
                 {% for comment in comment_list %}
                 <div style="padding: 1.5em 0;font-size:1.2em;border-top-style:solid;border-width:1px;border-color:silver;">
-                    <div style="font-size:0.9em;color:grey;">{{ comment.comment_name }}</div>
+                    <div style="font-size:0.9em;color:grey;">{{ comment.comment_name }}&nbsp;&nbsp;&nbsp;&nbsp;<a href="/sendmessage/" style="font-size:0.8em;color:blue;">send message</a></div>
                     <div style="">{{ comment.content }}</div>
                     <div style="font-size:0.8em;color:silver;">{{ comment.comment_date }}</div>
                 </div>

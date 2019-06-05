@@ -48,19 +48,17 @@
         <div class="wrap topInfo ">
           <div class="baseInfo">
             <div class="info">
-              <h2 class="name" >{{ data.name }}<small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</small><small>xxxx@xxx.com</small></h2>
+              <h2 class="name" >{{ data.name }}<small>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</small><small>{% if data.email %}{{ data.email }}{% else %}暂无邮箱{% endif %}</small></h2>
                <span class="num">
-                  <span>总发文量：</span>
-                  <span>总下载量：</span>
-                  <span>被引频次：</span>
+
               </span>
                  <p class="orgn">
                   <a target="kcmstarget" style="color: #0a6999">{{ data.institute }}</a>
                 </p>
-              <p class="doma">简介xxx</p>
+              <p class="doma">{% if data.introduction %}{{ data.introduction }}{% else %}暂无简介{% endif %}</p>
               <div class="sideLink">
                   <span class="shareBoard" >
-                      <a class="icon icon-share" href="#"><i></i>申请认证<em></em>
+                      <a class="icon icon-share" href="/identify/"><i></i>申请认证<em></em>
                       </a>
                   </span>
               </div>
@@ -76,103 +74,6 @@
                 <a>{{ data.direction }}</a>
             </div>
           </div>
-        </div>
-        <div class="wrap listInfo">
-            <nav  class="navbar" role="navigation" style="margin-bottom: 0px">
-                    <ul class="nav nav-tabs">
-                        <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" style="color: black">
-                                    全部年份
-                                    <b class="caret"></b>
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="#" style="color: black">2019</a></li>
-                                    <li><a href="#" style="color: black">2018</a></li>
-                                    <li><a href="#"style="color: black">2017</a></li>
-                                </ul>
-                            </li>
-                        <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"style="color: black">
-                                    全部类型
-                                    <b class="caret"></b>
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="#"style="color: black">论文</a></li>
-                                    <li><a href="#"style="color: black">专利</a></li>
-                                </ul>
-                            </li>
-                        <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"style="color: black">
-                                    全部作者
-                                    <b class="caret"></b>
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="#"style="color: black">第一作者</a></li>
-                                </ul>
-                            </li>
-                        <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"style="color: black">
-                                    按时间降序
-                                    <b class="caret"></b>
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="#"style="color: black">按时间升序</a></li>
-                                    <li><a href="#"style="color: black">按被引数降序</a></li>
-                                    <li><a href="#"style="color: black">按被引数升序</a></li>
-                                </ul>
-                            </li>
-                    </ul>
-                </nav>
-            <div class="result">
-                <div >
-                    <h3><a>搜索结果第一篇</a></h3>
-                    <div class="res_info">
-                        <span class="res_year">年代</span>-
-                        <span><a>作者1</a>,<a>作者2</a></span>-
-                        <a>杂志</a>-
-                        <span>
-                            <span>被引量：</span>
-                            <a>xxx</a>
-                        </span>
-                    </div>
-
-                </div>
-                <div>
-                    <h3><a>搜索结果第二篇</a></h3>
-                    <div class="res_info">
-                        <span class="res_year">年代</span>-
-                        <span><a>作者1</a>,<a>作者2</a></span>-
-                        <a>杂志</a>-
-                        <span>
-                            <span>被引量：</span>
-                            <a>xxx</a>
-                        </span>
-                    </div>
-
-                </div>
-                <div>
-                    <h3><a>搜索结果第三篇</a></h3>
-                    <div class="res_info">
-                        <span class="res_year">年代</span>-
-                        <span><a>作者1</a>,<a>作者2</a></span>-
-                        <a>杂志</a>-
-                        <span>
-                            <span>被引量：</span>
-                            <a>xxx</a>
-                        </span>
-                    </div>
-
-                </div>
-            </div>
-            <ul class="pagination pagination-lg">
-                <li><a href="#">&laquo;</a></li>
-                <li><a href="#">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">5</a></li>
-                <li><a href="#">&raquo;</a></li>
-            </ul>
         </div>
         </div>
 </body>
