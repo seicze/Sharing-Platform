@@ -19,12 +19,12 @@
     <nav class="navbar navbar-fixed-top navbar-default" role="navigation">
         <div class="container-fluid" >
             <div class="nav navbar-default  navbar-header">
-                <a class="navbar-brand" href="#">xfjz</a>
+                <a class="navbar-brand" href="/index/">iScholar</a>
             </div>
             <div>
                 <ul class="nav navbar-nav nav-pills navbar-left">
 
-                            <li ><a href="#">主页</a></li>
+                            <li ><a href="/index/">主页</a></li>
                 </ul>
             </div>
             <div>
@@ -75,5 +75,18 @@
             </div>
           </div>
         </div>
+        </div>
+        <div class="wrap listInfo">
+            <div class="result">
+                {% for paper in paper_list %}
+                    <div style="padding-left:30px;text-align:left;background:#F8F8FF" class="res_border">
+                        <h3><a href={{paper.url}}>{{paper.title}}</a></h3>
+                        <div class="res_info">
+                            <span style="font-size:20px">{{paper.time}}</span>
+                            <span style="font-size:20px">{{paper.author}}</span>
+                        </div>
+                    </div>
+                 {% endfor %}
+            </div>
         </div>
 </body>

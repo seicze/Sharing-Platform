@@ -61,11 +61,13 @@
 
                 <div class="author-wr">
                     <p class="label div-inline">作者：</p>
-                    <a class="author-text" href="#">{{ paper.author_name }}</a>
+                    {% for author in author_list %}
+                        <a class="author-text" href={{author.url}}>{{ author.name }}</a>
+                    {% endfor %}
                 </div>
                 <div class="author-wr">
                     <p class="label div-inline">机构：</p>
-                    <a class="author-text" href="#">{{ paper.institute }}</a>
+                    <p class="author-text" href="#">{{ paper.institute }}</p>
                 </div>
                 <div class="abstract-wr div-inline">
                     <div class="label div-inline" >摘要：</div>

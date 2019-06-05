@@ -55,9 +55,9 @@ def essayView(request,paper_id):
         click = Essay.objects.get(paper_id=paper_id)
         click.clicks = result.clicks + 1
         click.save()
-        str = result.keywords
-        str = str.split(";", str.count(';'))
-        for i in str:
+        name = result.keywords
+        name = name.split(";", name.count(';'))
+        for i in name:
             if i == '':
                 continue
             res = Hotspot.objects.filter(keyword=i)
@@ -85,7 +85,40 @@ def essayView(request,paper_id):
         user_id = request.session.get('user_id', False)
         is_collect = Collect.objects.filter(user_id=user_id,collection_id=paper_id,type="essay").exists()
         comment_list = Comment.objects.filter(resource_id=paper_id,type="essay").order_by("-comment_date")
-        return render(request, 'app01/viewEssay.html', {'paper': paper, 'user_id': user_id, 'is_collect': is_collect, 'comment_list': comment_list})
+
+        author_list=[]
+        name = paper.author_name
+        ins = paper.institute
+        pid = str(paper.paper_id)
+        name = name.split(";", name.count(';'))
+        for i in name:
+            if i == '':
+                continue
+            author = {}
+            author['name']=i
+            res = Expert.objects.filter(name=i)
+            if not res.exists():
+                add = Expert(name=i, institute=ins)
+                add.save()
+                res = Expert.objects.filter(name=i)
+            res = res[0]
+            id = str(res.expert_id)
+            author["url"]='/expert/'+id+'/'
+            author_list.append(author)
+            res = belonging.objects.filter(expertid=id)
+            if not res.exists():
+                add = belonging(expertid=id, kjcgid='')
+                add.save()
+                res = belonging.objects.filter(expertid=id)
+            res = res[0]
+            kjcgid = res.kjcgid
+
+            if not pid in kjcgid:
+                belonging.objects.filter(expertid=id).update(kjcgid=kjcgid + pid + ',0;')
+
+        if name == '':
+            author_list={'author':'未知'}
+        return render(request, 'app01/viewEssay.html', {'author_list':author_list,'paper': paper, 'user_id': user_id, 'is_collect': is_collect, 'comment_list': comment_list})
 
 
 def expertView(request):

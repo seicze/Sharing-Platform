@@ -155,11 +155,12 @@
     text-decoration: underline;
 }
 .res_info {
-    font-size: 12px;
+    font-size: 20px;
     margin-top: 3px;
 }
  .res_year {
     color: #005cd9;
+    font-size:120px;
 }
 a {
     outline: 0;
@@ -274,4 +275,15 @@ a {
     margin: 0 6px 0 8px;
     color: #666;
     font: 12px/2 SimSun,"����";
+}
+.res_year span{
+    font-size:14px;
+}
+.res_border{
+    border:1px solid #EBEBEB;
+	border-radius: 0.3em;
+	-webkit-border-radius:0.3em;
+  	-moz-border-radius:0.3em;
+ 	 -o-border-radius:0.3em;
+ 	 margin-bottom: 10px;
 }

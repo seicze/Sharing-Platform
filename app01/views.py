@@ -2,7 +2,7 @@ from django.shortcuts import render,HttpResponseRedirect,HttpResponse
 from django.contrib import auth
 # from app01.myform import User as FUser
 # from app01.models import User
-from app01.models import Account,TMessage,Message,Expert,Collect,Feedback,Identify,Hotspot
+from app01.models import Account,TMessage,Message,Expert,Collect,Feedback,Identify,Hotspot,belonging,Essay
 from django.contrib import messages
 from django import forms
 from django.core.mail import send_mail, send_mass_mail
@@ -285,7 +285,28 @@ def expert(request,expert_id):
     result = Expert.objects.filter(expert_id=expert_id)
     if not result.exists():
         return HttpResponseRedirect('/index/')
-    return render(request,"app01/personal/Expert.html",{'data': result[0], 'user_id': user_id})
+
+    res = belonging.objects.filter(expertid=expert_id)
+    if res.exists():
+        paper_list=[]
+        res = res[0]
+        kjcg = res.kjcgid
+        kjcg = kjcg.split(";", kjcg.count(';'))
+        for i in kjcg:
+            if i == '':
+                continue
+            paper={}
+            i = i.split(",", i.count(','))
+            if(i[1] == '0'):
+                p = Essay.objects.filter(paper_id = i[0])
+                p = p[0]
+                paper['title']=p.paper_name
+                paper['url']='/essay/'+str(p.paper_id)+'/'
+                paper['time']=p.published_time
+                paper['author']=p.author_name
+
+            paper_list.append(paper)
+    return render(request,"app01/personal/Expert.html",{'paper_list':paper_list,'data': result[0], 'user_id': user_id})
 
 
 def topup(request):
