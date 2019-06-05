@@ -134,7 +134,7 @@ def login(request):
 
     if not result.exists():
         messages.success(request, "用户名或密码不正确！")
-        return HttpResponseRedirect('/registerView/')
+        return HttpResponseRedirect('/loginView/')
     else:
         result = result[0]
         request.session['user_id'] = result.user_id #修改了
@@ -158,7 +158,7 @@ def message(request):
     user_id = request.session.get('user_id', False)
     print(user_id)
     if not user_id:
-        return HttpResponseRedirect('/registerView/')
+        return HttpResponseRedirect('/loginView/')
     result = TMessage.objects.filter(receive_id=user_id).order_by('-send_date')
     result2 = Message.objects.filter(receive=user_id).order_by('-send_date')
     unread1 = 0
@@ -189,7 +189,7 @@ def send(request):
     content = request.POST['content']
     user_id = request.session.get('user_id', False)
     if not user_id:
-        return HttpResponseRedirect('/registerView/')
+        return HttpResponseRedirect('/loginView/')
     receiver = Account.objects.filter(user_name=user)
     if not receiver.exists():
         messages.success(request, "收信人不合法！")
@@ -204,7 +204,7 @@ def send(request):
 def feedback(request):
     user_id = request.session.get('user_id', False)
     if not user_id:
-        return HttpResponseRedirect('/registerView/')
+        return HttpResponseRedirect('/loginView/')
     return render(request,'app01/feedback.html',{'user_id': user_id})
 
 
@@ -212,7 +212,7 @@ def sendfeedback(request):
     content = request.POST['content']
     user_id = request.session.get('user_id', False)
     if not user_id:
-        return HttpResponseRedirect('/registerView/')
+        return HttpResponseRedirect('/loginView/')
     # user = Account.objects.get(user_id=user_id)
     msg = Feedback(send=user_id, content=content, send_date=datetime.datetime.now())
     msg.save()
@@ -223,7 +223,7 @@ def sendfeedback(request):
 def customerps(request):
     user_id = request.session.get('user_id', False)
     if not user_id:
-        return HttpResponseRedirect('/registerView/')
+        return HttpResponseRedirect('/loginView/')
     else:
         result = Account.objects.filter(user_id=user_id)
         result=result[0]
@@ -246,7 +246,7 @@ def expertps(request):
 def personalmodify(request):
     user_id = request.session.get('user_id', False)
     if not user_id:
-        HttpResponseRedirect('/registerView/')
+        HttpResponseRedirect('/loginView/')
     else:
         result = Account.objects.filter(user_id=user_id)
         result = result[0]
@@ -263,7 +263,7 @@ def personalmodify(request):
 def personalchange(request):
     user_id = request.session.get('user_id', False)
     if not user_id:
-        return HttpResponseRedirect('/registerView/')
+        return HttpResponseRedirect('/loginView/')
     else:
         account = Account.objects.get(user_id=user_id)
         account.user_name=request.POST['user_name']
@@ -297,14 +297,14 @@ def topup(request):
 def identify(request):
     user_id = request.session.get('user_id', False)
     if not user_id:
-        return HttpResponseRedirect('/registerView/')
+        return HttpResponseRedirect('/loginView/')
     return render(request,"app01/identify/identify.html",{'user_id': user_id})
 
 
 def confirmM(request):
     user_id = request.session.get('user_id', False)
     if not user_id:
-        return HttpResponseRedirect('/registerView/')
+        return HttpResponseRedirect('/loginView/')
     return render(request,"app01/identify/confirmM.html",{'user_id': user_id})
 
 
@@ -315,7 +315,7 @@ def confirmI(request):
 def confirminfo(request,str):
     user_id = request.session.get('user_id', False)
     if not user_id:
-        return HttpResponseRedirect('/registerView/')
+        return HttpResponseRedirect('/loginView/')
     if str == request.session.get('random_str', False):
         return render(request, "app01/identify/confirminfo.html",{'user_id': user_id})
     else:
@@ -325,7 +325,7 @@ def confirminfo(request,str):
 def success(request):
     user_id = request.session.get('user_id', False)
     if not user_id:
-        return HttpResponseRedirect('/registerView/')
+        return HttpResponseRedirect('/loginView/')
     name = request.POST['name']
     institute = request.POST['institute']
     position = request.POST['position']
