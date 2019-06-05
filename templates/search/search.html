@@ -81,12 +81,14 @@
                     {% if result.object.paper_id %}
                     <p>
                         <a href="/essay/{{result.object.paper_id}}" target="_blank" class="search_result-url">论文：{{ result.object.paper_name }} </a><br/>
-                        {% highlight result.text with query css_class "keyword" %}
+                        <p>{{ result.object.author_name }}</p><p>{{ result.object.institute }}</p>
+                        {% highlight result.object.introduction with query css_class "keyword" %}
                     </p>
                     {% elif result.object.patent_id %}
                     <p>
                         <a href="/patent/{{result.object.patent_id}}" target="_blank" class="search_result-url">专利：{{ result.object.patent_name }} </a><br/>
-                        {% highlight result.text with query css_class "keyword" %}
+                        <p>{{ result.object.author_name }}</p>
+                        {% highlight result.object.introduction with query css_class "keyword" %}
                     </p>
                     {% else %}
                     <p>
