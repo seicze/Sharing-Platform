@@ -176,12 +176,12 @@ def message(request):
     return render(request, 'app01/message.html', {'data': result, 'data2': result2, 'user_id': user_id, 'unread1': unread1, 'unread2': unread2})
 
 
-def sendmessage(request):
+def sendmessage(request,name):
     user_id = request.session.get('user_id', False)
     print(user_id)
     if not user_id:
         return render(request, 'app01/login.html')
-    return render(request,"app01/sendmessage.html", {'user_id':user_id})
+    return render(request,"app01/sendmessage.html", {'user_id':user_id, 'receiver_name': name})
 
 
 def send(request):
@@ -195,10 +195,10 @@ def send(request):
         messages.success(request, "收信人不合法！")
         return HttpResponseRedirect('/sendmessage/')
     user = Account.objects.get(user_id=user_id)
-    msg = Message(send=user,receive=receiver[0],content=content,send_date=datetime.datetime.now(),send_name=user.user_name)
+    msg = Message(send=user,receive=receiver[0],content=content,send_date=datetime.datetime.now(),send_name=user.user_name,state=1)
     msg.save()
     messages.success(request, "发送成功！")
-    return HttpResponseRedirect('/sendmessage/')
+    return HttpResponseRedirect('/message/')
 
 
 def feedback(request):

@@ -31,7 +31,7 @@ urlpatterns = [
     #path('search/', views.search),
     path(r'search/', include('haystack.urls')),
     path(r'message/', views.message),
-    path(r'sendmessage/', views.sendmessage),
+    path(r'sendmessage/<path:name>/', views.sendmessage),
     path(r'send/', views.send),
     path(r'feedback/', views.feedback),
     path(r'sendfeedback/', views.sendfeedback),
