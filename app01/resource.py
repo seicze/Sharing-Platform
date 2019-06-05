@@ -3,7 +3,7 @@ from django.contrib import auth
 from django.http import HttpResponse
 # from app01.myform import User as FUser
 # from app01.models import User
-from app01.models import Essay,Patent,Expert,Collect,Comment,Account
+from app01.models import Essay,Patent,Expert,Collect,Comment,Account,Hotspot
 from django.contrib import messages
 import datetime
 from django import forms
@@ -23,7 +23,19 @@ def essayView(request,paper_id):
         click = Essay.objects.get(paper_id=paper_id)
         click.clicks = result.clicks + 1
         click.save()
-
+        str = result.keywords
+        str = str.split(";", str.count(';'))
+        for i in str:
+            if i == '':
+                continue
+            res = Hotspot.objects.filter(keyword=i)
+            if not res.exists():
+                add = Hotspot(keyword=i, num=1)
+                add.save()
+            else:
+                res = res[0]
+                num = res.num + 1
+                Hotspot.objects.filter(keyword=i).update(num=num)
         # paper={}
         # paper['name']=result.paper_name
         # paper['author']=result.author_name
