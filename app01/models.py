@@ -43,7 +43,7 @@ class Account(models.Model):
     class Meta:
         managed = False
         db_table = 'account'
-
+'''
 class EssayAuthor(Document):
     name = StringField()
     org = StringField()
@@ -127,7 +127,7 @@ class Expert(models.Model):
         managed = False
         db_table = 'expert'
 
-'''
+
 
 class Feedback(models.Model):
     id = models.BigAutoField(primary_key=True)
