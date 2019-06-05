@@ -3,7 +3,7 @@ from django.contrib import auth
 from django.http import HttpResponse
 # from app01.myform import User as FUser
 # from app01.models import User
-from app01.models import Essay,Patent,Expert,Collect,Comment,Account,Hotspot
+from app01.models import Essay,Patent,Expert,Collect,Comment,Account,Hotspot,belonging
 from django.contrib import messages
 import datetime
 from django import forms
@@ -11,6 +11,38 @@ from django.core.exceptions import ValidationError
 from django.contrib.auth.decorators import login_required
 # Create your views here.
 
+def test(request):
+    essay = Essay.objects.all()
+
+    for i in range(50000):
+        paper = essay[i]
+        name = paper.author_name
+        ins = paper.institute
+        pid = str(paper.paper_id)
+        name = name.split(";", name.count(';'))
+        for i in name:
+            if i == '':
+                continue
+
+            res = Expert.objects.filter(name=i)
+            if not res.exists():
+                add = Expert(name=i, institute=ins)
+                add.save()
+                res = Expert.objects.filter(name=i)
+
+            res = res[0]
+            id = res.expert_id
+            res = belonging.objects.filter(expertid = id)
+            if not res.exists():
+                add = belonging(expertid=id,kjcgid='')
+                add.save()
+                res = belonging.objects.filter(expertid = id)
+            res = res[0]
+            kjcgid = res.kjcgid
+
+            if not pid in kjcgid:
+                belonging.objects.filter(expertid = id).update(kjcgid=kjcgid+pid+',0;')
+    return HttpResponse("game over!")
 
 def essayView(request,paper_id):
     # paper_id = request.GET['paper_id']
@@ -23,9 +55,9 @@ def essayView(request,paper_id):
         click = Essay.objects.get(paper_id=paper_id)
         click.clicks = result.clicks + 1
         click.save()
-        str = result.keywords
-        str = str.split(";", str.count(';'))
-        for i in str:
+        name = result.keywords
+        name = name.split(";", name.count(';'))
+        for i in name:
             if i == '':
                 continue
             res = Hotspot.objects.filter(keyword=i)

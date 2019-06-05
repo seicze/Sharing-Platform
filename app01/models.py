@@ -253,3 +253,11 @@ class Hotspot(models.Model):
     class Meta:
         managed = False
         db_table = 'hotspot'
+
+class belonging(models.Model):
+    expertid = models.IntegerField(primary_key=True, null=False)
+    kjcgid = models.CharField(max_length=3000)
+
+    class Meta:
+        managed = False
+        db_table = 'belonging'

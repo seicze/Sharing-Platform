@@ -52,4 +52,5 @@ urlpatterns = [
     path(r'success/', views.success),
     path(r'send_my_email/',views.send_my_email),
     path(r'comment/<str:type>/<int:id>/', resource.comment),
+    path(r'test/',resource.test)
 ]
