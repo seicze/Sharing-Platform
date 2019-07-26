@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>搜索结果</title>
+</head>
+<body>
+    <ul>
+        {% for line in result %}
+            <li>
+                <table border="0">
+                    <tr>
+                        <td>{{line.paper_name}}</td>
+                        <td>{{line.author_name}}</td>
+                        <td>{{line.institute}}</td>
+                        <td>{{line.published_time}}</td>
+                        <td>{{line.summary}}</td>
+                    </tr>
+                </table>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
